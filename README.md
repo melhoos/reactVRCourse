@@ -14,4 +14,7 @@ This task will explain how you init your ReactVR project. Open up the **Basics/i
 
 Now go back to your terminal / console application and write ```npm start```. Ooops! Remember du ```cd``` into the Basic folder, if you have not done so yet! (Psst. ```cd``` stand for change directory and is the same as opening the folder in the finder app or directory on you mac/computer). When the terminal / console is done building your reactVR project go ahead and open http://localhost:8081/vr/. By the way, loading the page can take some time, expesially the first time you are doing it. 
 
-
+Open up the **Basics/index.vr.js** file, and as you see there are three compoenets inside the Basics React Component. View, Pano and Text. 
+- ```<View>```: You only need one View component for an ReactVR project. This component determinates the view, and you define whatever you want to include inside your view by putting it inside this component. 
+- ```<Pano>```: Pano is short for panorama. In this component you can select the background image. We have added some more pano pictures for you in the folder **Basics/static_assets/**. Go ahead and try to change the pano image to something else in this folder!
+- ```<Text>```: This is one of the most simpliest components that is included in react-vr. The text component will simply add a text to your view. There are many other components supported by the react-vr package. For example: Box, Circle, Sylinder and even Image and Video! We will come back to what all the props inside the compoents means later in this course. 
