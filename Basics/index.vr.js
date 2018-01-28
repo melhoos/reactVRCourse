@@ -5,7 +5,7 @@ import {
   Pano,
   Text,
   View,
-  Box
+  Box, Cylinder
 } from 'react-vr';
 
 export default class Basics extends React.Component {
