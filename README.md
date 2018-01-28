@@ -55,7 +55,7 @@ style={{
 ```
 
 ➡️ If you like to manually change one coordinate at the time, you can use ```translateY```, ```transalteX``` and ```translateZ```. 
-And also, if you like to rotate your component, you can use ```rotateY```, ```rotateX``` and ```rotateZ```. Remember, when you are rotating components, their value should be in degrees. So if you like to rotate Y-axsis 45 degrees: you simply set ```{rotateY: 45}```. 
+And also, if you like to rotate your component, you can use ```rotateY```, ```rotateX``` and ```rotateZ```. Remember, when you are rotating components, their value should be in degrees. So if you like to rotate Y-axsis 45 degrees: you simply set ```{rotateY: 45}``` 🙌. 
 
 
 
