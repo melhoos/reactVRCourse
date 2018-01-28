@@ -21,7 +21,7 @@ export default class Basics extends React.Component {
           style={{
             color: '#dd2222',
             transform: [
-              {translate: [0, 0, -3]},
+              {translate: [2, 0, -3]},
               {translateY: 1},
               {translateX: -0.5},
               {rotateY: 45},
