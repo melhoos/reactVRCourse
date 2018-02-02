@@ -5,6 +5,7 @@ import {
   Pano,
   Text,
   View,
+  Model,
   Box, Cylinder
 } from 'react-vr';
 
@@ -12,23 +13,15 @@ export default class Basics extends React.Component {
   render() {
     return (
       <View>
-        <Pano source={asset('starry-sky.jpg')}/>
-        <Box
-          dimWidth={0.5}
-          dimHeight={0.5}
-          dimDepth={0.5}
-          wireframe={true}
+        <Pano source={asset('chess-world.jpg')}/>
+        <Model 
+          source={{obj: asset('Tree.obj')}}
           style={{
-            color: '#dd2222',
-            transform: [
-              {translate: [2, 0, -3]},
-              {translateY: 1},
-              {translateX: -0.5},
-              {rotateY: 45},
-              {rotateZ: 45}
-            ]
+            transform: [{
+              translate: [0,-1,-3]
+            }]
           }}
-        />
+          />
       </View>
     );
   }
