@@ -14,12 +14,19 @@ export default class Basics extends React.Component {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
+        <Model
+          source={{
+            obj: asset('three.obj'),
+          }}
+          style={{
+            transform: [{translate: [-1, 1, -5]}]
+          }}
+        />
+
         <Model 
           source={{obj: asset('Tree.obj')}}
           style={{
-            transform: [{
-              translate: [0,-1,-3]
-            }]
+            transform: [{translate: [-1, 1, -5]}]
           }}
           />
       </View>
