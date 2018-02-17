@@ -1,6 +1,6 @@
-# ReactVR
+# ReactVR 👀
 
-Welcome to this ReactVR course 👀. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solutions for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😉✌🏼! 
+Welcome to this ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solutions for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😉✌🏼! 
 
 ## Getting Started
 This course requires that you have node installed. Please follow the next steps if you have not installed node before. 
@@ -9,7 +9,7 @@ This course requires that you have node installed. Please follow the next steps 
 - ✅ To verify that npm is also installed, write ```npm -v``` in the terminal / console application.
 - ✅ After cloning this project, remember to run ```npm install``` before you start this course. 
 
-👉 **Tips:** If you like to create your own reactVR app, install ReactVR Cli by typing ```npm install react-vr-cli -g``` and then run ```react-vr init [name of your reactVR project]``` to create a new reactVR project! We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch! 
+👉 **Tips:** If you like to create your own reactVR app, install ReactVR Cli by typing ```npm install react-vr-cli -g``` and then run ```react-vr init [name of your reactVR project]``` to create a new reactVR project! 😄 We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch! 
 
 ## Task 1 - Init your ReactVR project ☝️
 This task will explain how you initialize your ReactVR project. Open up the **reactVR_Course** folder and look at the **index.vr.js** file and take a brief look inside it. This will be the main file we are going to work with. But first, let's take a look into the file **/vr/client.js**. Above line 11 ```...options,``` add ```enableHotReload: true,``` and hit save. This will enable the hot reloader. That is, our application will automatically relode its view whenever we save a change inside our code! 
@@ -66,14 +66,23 @@ style={{
 ➡️ If you like to manually change one coordinate, you can add ```translateY```, ```transalteX``` and ```translateZ``` into the ```transform```. 
 And also, if you like to rotate your component, you can use ```rotateY```, ```rotateX``` and ```rotateZ```. Remember, when you are rotating components, their value should be in degrees. So if you like to rotate Y-axsis 45 degrees: you simply set ```{rotateY: 45}``` 🙌. 
 
-❓ Try to translate the box in both Y and X direction.
+❓ Try to translate the box in both Y and X direction. 
 
 ❓ Then, try rotating the ```<Box/>``` component 45 degrees both in Y and Z direction! 
 
-## Task 3 - Add a 3D model! 
+❓ Add a ```<Cylinder>``` component and place it inside your view! 
+
+## Task 3 - Add a 3D model! 🤓 🌎
+Okay, great! Now you know how to add a reactVR component, but lets be fair, it is not that interesting! In this task we will introduce you to how to add a 3D component inside your reactVR app! 
 
 
-## Task 4 - Add animation to your 3D Model! 
+
+👉 **Tips:** If you like to add your own 3D object, https://clara.io/library has a wide varety of 3D models and formats for exporting 3D models. Remember to download the .obj format and add it in your **/static_assets** folder 😉. Sometimes you get both .obj and .mtl file when downloading a 3D model. I like to think of the .obj file as "the container" and the .mtl file as "the fill" 🙃. 
+
+## Task 4 - Add animation to your 3D Model! 😵 
+
+
+## Task 5 - 
 
 
 ## Task X - Deploy your project! 
