@@ -13,7 +13,7 @@ export default class reactVR_course extends React.Component {
       <View>
         <Pano source={asset('space.jpg')}/>
         <Model
-          wireframe={true}
+          wireframe={false}
           source={{
             obj: asset('death-star.obj'),
           }}

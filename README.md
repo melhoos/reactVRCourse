@@ -9,14 +9,14 @@ This course requires that you have node installed. Please follow the next steps 
 - ✅ To verify that npm is also installed, write ```npm -v``` in the terminal / console application.
 - ✅ After cloning this project, remember to run ```npm install``` before you start this course. 
 
-👉 **Tips:** If you like to create your own reactVR app, install ReactVR Cli by typing ```npm install react-vr-cli -g``` and then run ```react-vr init [name of your reactVR project]``` to create a new reactVR project! 😄 We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch! 
+👉 **Tips:** If you like to create your own ReactVR app, install ReactVR Cli by typing ```npm install react-vr-cli -g``` and then run ```react-vr init [name of your reactVR project]``` to create a new ReactVR project! 😄 We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch! 
 
 ## Task 1 - Init your ReactVR project ☝️
 This task will explain how you initialize your ReactVR project. Open up the **reactVR_Course** folder and look at the **index.vr.js** file and take a brief look inside it. This will be the main file we are going to work with. But first, let's take a look into the file **/vr/client.js**. Above line 11 ```...options,``` add ```enableHotReload: true,``` and hit save. This will enable the hot reloader. That is, our application will automatically relode its view whenever we save a change inside our code! 👍🏼 
 
 ➡️ Now go back to your terminal / console application and write ```npm start```. 
 
-Ooops! Remember to ```cd``` into the Basic folder, if you have not done so yet! (Psst. ```cd``` stand for change directory and is the same as opening the folder in the finder app or directory on you mac/computer). When the terminal / console is done building your reactVR project go ahead and open http://localhost:8081/vr/. By the way, loading the page can take some time, expesially the first time you are doing it 🕑 😅...
+Ooops! Remember to ```cd``` into the Basic folder, if you have not done so yet! (Psst. ```cd``` stand for change directory and is the same as opening the folder in the finder app or directory on you mac/computer). When the terminal / console is done building your ReactVR project go ahead and open http://localhost:8081/vr/. By the way, loading the page can take some time, expesially the first time you are doing it 🕑 😅...
 
 Open up the **index.vr.js** file, and as you see there are three components inside the reactVR_course React Component. View, Pano and Text. 
 - ```<View>```: This component determinates the view, and you define whatever you want to include inside your view by putting it inside this component. 
@@ -44,7 +44,7 @@ Okay, so the next step is to tell your view how big you want your ```<Box/>``` c
 - ```dimDepth```
 - ```wireframe = {true} ```
 
-These three first values determinates the width, height and depth of the ```<Box/>``` component. Set each of the values to be equal to something between 0 and 1, because we don't want the box to be too big 😉. In ReactVR the dimention is measured in meters, therefore it is often seen values between 0 and 1 in reactVR projects. ```wireframe = {true} ``` is just to see the outline of the box, and has the only purpose of helping us see the dimention of the ```<Box/>``` component. 
+These three first values determinates the width, height and depth of the ```<Box/>``` component. Set each of the values to be equal to something between 0 and 1, because we don't want the box to be too big 😉. In ReactVR the dimention is measured in meters, therefore it is often seen values between 0 and 1 in ReactVR projects. ```wireframe = {true} ``` is just to see the outline of the box, and has the only purpose of helping us see the dimention of the ```<Box/>``` component. 
 
 Try to reload the page and see what happens. 
 
@@ -74,7 +74,7 @@ And also, if you like to rotate your component, you can use ```rotateY```, ```ro
 ❓ Add a ```<Cylinder>``` component and place it inside your view! 
 
 ## Task 3 - Add a 3D model! 🤓 🌎
-Okay, great! Now you know how to add a reactVR component, but lets be fair, it is not that interesting! In this task we will introduce you to how to add a 3D component inside your reactVR app! 
+Okay, great! Now you know how to add a ReactVR component, but lets be fair, it is not that interesting! In this task we will introduce you to how to add a 3D component inside your ReactVR app! 
 
 You might already noticed that we have added a **death-star.obj** inside the **/static_assets** folder. Now we are going to use this .obj file and add it to our view. 
 
@@ -90,7 +90,7 @@ source={{
     }}
 ```
 
-❓ Add the prop ```wireframe``` and set its value to ```true``` inside your ```<Model/>``` component. 
+❓ Include the prop ```wireframe``` and set its value to ```true``` inside your ```<Model/>``` component. 
 
 ![Death star 3D model with wireframe](https://image.ibb.co/nJxT87/Screen_Shot_2018_02_18_at_10_53_33.png)
 
@@ -101,12 +101,116 @@ Another way to fill your 3D component is to add a texture! A texture is used for
 We found a proper texture for the **death-star.obj** here: 
 https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
 
-❓ Add a ```texture``` prop inside your ```<Model/>```, and define it as the url above. Remember, the texture prop always take its argument as a string 😉. 
+❓ Add a ```texture``` prop inside your ```<Model/>```, and define it as the url above. Remember, the texture prop always take its argument as a string 😉. Ops! You should also set the ```wireframe``` equal to false. When the ```wireframe``` is true, it will overwrite the texture 😬. 
 
 ## Task 4 - Add animation to your 3D Model! 😵 🔄
+Now lets add some animation to our 3D component! In this task we will learn how to make the **death-star.obj** spin itself in y-direction. 
 
+❓ Import ```Animated``` and convert your Model to an ```AnimatedModel``` by defining it as described below inside your ```render``` function. Change the ```Model``` to ```AnimatedModel```.
 
+```
+const AnimatedModel = Animated.createAnimatedComponent(Model);
+```
 
+❓ In order to make the **death-star.obj** spin we need to define its local state when first load the app. This state should be an Animated.Value Lets define the components state:
+
+```
+export default class reactVR_course extends React.Component {
+  constructor() {
+    super();
+    this.state = { 
+      spin: new Animated.Value(0)
+    };
+  }
+  //more stuff
+}
+```
+
+❓ Next go ahead and bind the ```spin``` inside the styling of our ```AnimatedModel```. **Hint:** use the ```rotateY``` 😜. 
+
+Is it spinning? 🤔
+
+Nope 👻! We need to do a little more coding before it actually spins! We need to tell the React Component it should start spinning when it reloads the code! In order to this, we are going to use ```componentDidMount()``` function. ```componentDidMount()``` function is one of React's lifecyscles methods and it is invoked immediately after a component is mounted. 
+
+❓ Define the componentDidMount() function insde your React component. Use the ```Animated.timing``` in order to specify the rotation value from 0 to 1 in 5 seconds. Ops. Remember that the duration is measured in ms 😇.
+
+```
+  componentDidMount() {
+    Animated.timing(
+      this.state.spin,
+      {
+       toValue: //your value here,
+       duration: //your value here 
+      }
+    ).start();
+  }
+```
+
+Is it still not working? 😳
+
+This is because rotate transformations have to be strings and not an ```Animated.Value``` as we have set in our state according to the [React VR official documentation](https://facebook.github.io/react-vr/docs/transforms.html#props).
+
+![Transformation documentation from ReactVR](https://image.ibb.co/in6o87/Screen_Shot_2018_02_18_at_11_55_23.png)
+
+Inside our ```componentDidMount()``` function we are changing the value from 0 to 1, but the ```rotateY``` prop expects is a rotation value as string of "0deg" to "360deg". How can we reinterpreted the value 0 to 1 as the string "0deg" to "360deg"? 🤔 
+
+Luckly we can achieve this using _interpolate_ 🤗.
+
+❓ Instead of using ```rotateY: this.state.spin```, change it to ```rotateY: this.state.spin.interpolate()```.
+
+❓ The ```interpolate()``` function takes one arguement. This argument should be an object that looks like this: 
+
+```
+{
+    inputRange: [0, 1],
+    outputRange: ['0deg', '360deg']
+}
+```
+
+It is spins! 🎉🎈😄
+![Death-star spinning](https://cdn-images-1.medium.com/max/1600/1*5PQi0QMqTVgQxnwxXgrsCw.gif)
+
+❓ Lets clean up our code a little bit and move the right side of the ```rotateY:``` into a separate constant inside our render function and call it for ```spin```. So the the ```AnimatedModel``` should look something like this: 
+
+```
+<AnimatedModel
+    wireframe={false}
+    source={{
+        obj: asset('death-star.obj'),
+    }}
+    style={{
+        transform: [
+            {translate: [2,0,-4]},
+            {rotateY: spin}
+        ]
+    }}
+    texture={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png"}
+    />
+```
+
+But the **death-star.obj** only spins one time 🤔. We want to make it loop! 😁
+
+❓ Move everything that is inside the ```componentDidMount()``` function to a separate function. Name the function for ```spinAnimation()``` and call it from the ```componentDidMount()``` function. Remember to write ```this.spinAnimation()``` in order to call it! 
+
+❓ In order for us to repeat the function, we must call the ```this.spinAnimation()``` repeatedly. Add the following code inside your ```spinAnimation()```.
+
+```
+).start( () => this.spinAnimation()); 
+```
+
+Still not spinning more than one time? 😧
+
+The explanation to this is that the ```this.state.spin``` value is already equal to 1 when we redo the ```spinAnimation()``` function. Therefore we need to set the ```this.state.spin``` value back to value 0. 
+
+❓ Set ```this.state.spin``` value to 0 in the beginning of the ```spinAimation()``` function.
+
+Hurray! It is spinning! 😃 👏
+
+But as you may see, the spinning slows down at the end of the rotation. If you don't want it to slow down, we can change the easing of the rotation. 
+
+❓ Import ```Easing``` from ```react-native``` and add ```easing``` property to the ```Animated.timing``` and set the value to ```Easing.linear```. 
+
+Congratulations! You now have a 3D model that animates! 🎉🌟
 
 ## Task 5 - 
 
