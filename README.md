@@ -12,7 +12,7 @@ This course requires that you have node installed. Please follow the next steps 
 👉 **Tips:** If you like to create your own reactVR app, install ReactVR Cli by typing ```npm install react-vr-cli -g``` and then run ```react-vr init [name of your reactVR project]``` to create a new reactVR project! 😄 We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch! 
 
 ## Task 1 - Init your ReactVR project ☝️
-This task will explain how you initialize your ReactVR project. Open up the **reactVR_Course** folder and look at the **index.vr.js** file and take a brief look inside it. This will be the main file we are going to work with. But first, let's take a look into the file **/vr/client.js**. Above line 11 ```...options,``` add ```enableHotReload: true,``` and hit save. This will enable the hot reloader. That is, our application will automatically relode its view whenever we save a change inside our code! 
+This task will explain how you initialize your ReactVR project. Open up the **reactVR_Course** folder and look at the **index.vr.js** file and take a brief look inside it. This will be the main file we are going to work with. But first, let's take a look into the file **/vr/client.js**. Above line 11 ```...options,``` add ```enableHotReload: true,``` and hit save. This will enable the hot reloader. That is, our application will automatically relode its view whenever we save a change inside our code! 👍🏼 
 
 ➡️ Now go back to your terminal / console application and write ```npm start```. 
 
@@ -92,15 +92,20 @@ source={{
 
 ❓ Add the prop ```wireframe``` and set its value to ```true``` inside your ```<Model/>``` component. 
 
+![Death star 3D model with wireframe](https://ibb.co/ifBo87)
+
 👉 **Tips:** If you like to add your own 3D object, https://clara.io/library has a wide varety of 3D models and formats for exporting 3D models. Remember to download the .obj format and add it in your **/static_assets** folder 😉. Sometimes you get both .obj and .mtl file when downloading a 3D model. I like to think of the .obj file as "the container" and the .mtl file as "the fill" 🙃. 
 
 Another way to fill your 3D component is to add a texture! A texture is used for defining the texture to the Model. It is a http address and the Model uses this if mtl is not specified. 
 
-We found a proper texture for the **death-star.obj** here: https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
+We found a proper texture for the **death-star.obj** here: 
+https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
 
 ❓ Add a ```texture``` prop inside your ```<Model/>```, and define it as the url above. Remember, the texture prop always take its argument as a string 😉. 
 
 ## Task 4 - Add animation to your 3D Model! 😵 🔄
+
+
 
 
 ## Task 5 - 
