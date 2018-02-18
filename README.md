@@ -1,6 +1,6 @@
 # ReactVR 👀
 
-Welcome to this ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solutions for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😉✌🏼! 
+Welcome to this ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solutions for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😉✌🏼! _Comment: Remove this? - Add the solution folder after the course is finished??_
 
 ## Getting Started
 This course requires that you have node installed. Please follow the next steps if you have not installed node before. 
@@ -24,6 +24,7 @@ Open up the **index.vr.js** file, and as you see there are three components insi
 - ```<Text>```: This is one of the most simpliest components that is included in react-vr. The text component will simply add a text to your view. There are many other components supported by the react-vr package. For example: ```<Box/>```, ```<Plane/>```, ```<Cylinder>``` and even ```<Image/>``` and ```<Video/>```! We will come back to what all the props inside the compoents means later in this course. 
 
 ❓ Go ahead and try to change the pano image to something else! **Hint** : Look into **/static_assets** folder 😉. 
+
 ❓ Try to change the text from 'hello' to something else. 
 
 ## Task 2 - Add your first ReactVR component! 👊
@@ -75,11 +76,31 @@ And also, if you like to rotate your component, you can use ```rotateY```, ```ro
 ## Task 3 - Add a 3D model! 🤓 🌎
 Okay, great! Now you know how to add a reactVR component, but lets be fair, it is not that interesting! In this task we will introduce you to how to add a 3D component inside your reactVR app! 
 
+You might already noticed that we have added a **death-star.obj** inside the **/static_assets** folder. Now we are going to use this .obj file and add it to our view. 
 
+❓ First, remove the ```<Box/>``` and ```<Cylinder>``` components (don't worry we are going to use what we learned in the previous task later) and change the pano soruce to ```space.jpg```. 
+
+❓ Import and add ```<Model/>``` component to the view and define the style, as you did in the previous task. 
+
+❓ We need to tell the ```<Model/>``` component to use the **death-star.obj** as its source. Add a ```source``` prop inside your ```<Model/>``` component and define the obj file. 
+
+```
+source={{
+        obj: asset('objFileNameHere'),
+    }}
+```
+
+❓ Add the prop ```wireframe``` and set its value to ```true``` inside your ```<Model/>``` component. 
 
 👉 **Tips:** If you like to add your own 3D object, https://clara.io/library has a wide varety of 3D models and formats for exporting 3D models. Remember to download the .obj format and add it in your **/static_assets** folder 😉. Sometimes you get both .obj and .mtl file when downloading a 3D model. I like to think of the .obj file as "the container" and the .mtl file as "the fill" 🙃. 
 
-## Task 4 - Add animation to your 3D Model! 😵 
+Another way to fill your 3D component is to add a texture! A texture is used for defining the texture to the Model. It is a http address and the Model uses this if mtl is not specified. 
+
+We found a proper texture for the **death-star.obj** here: https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
+
+❓ Add a ```texture``` prop inside your ```<Model/>```, and define it as the url above. Remember, the texture prop always take its argument as a string 😉. 
+
+## Task 4 - Add animation to your 3D Model! 😵 🔄
 
 
 ## Task 5 - 
