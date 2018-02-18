@@ -92,7 +92,7 @@ source={{
 
 ❓ Add the prop ```wireframe``` and set its value to ```true``` inside your ```<Model/>``` component. 
 
-![Death star 3D model with wireframe](https://ibb.co/ifBo87)
+![Death star 3D model with wireframe](https://image.ibb.co/nJxT87/Screen_Shot_2018_02_18_at_10_53_33.png)
 
 👉 **Tips:** If you like to add your own 3D object, https://clara.io/library has a wide varety of 3D models and formats for exporting 3D models. Remember to download the .obj format and add it in your **/static_assets** folder 😉. Sometimes you get both .obj and .mtl file when downloading a 3D model. I like to think of the .obj file as "the container" and the .mtl file as "the fill" 🙃. 
 
