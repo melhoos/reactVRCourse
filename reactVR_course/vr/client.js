@@ -6,9 +6,15 @@
 import {VRInstance} from 'react-vr-web';
 
 function init(bundle, parent, options) {
-  const vr = new VRInstance(bundle, 'reactVR_course', parent, {
+  const vr = new VRInstance(bundle, 'IteraGame', parent, {
     // Add custom options here
-    enableHotReload: true, //task 1
+    raycasters: [{
+      getType: () => "simple",
+      getRayOrigin: () => [0, 0, 0],
+      getRayDirection: () => [0, 0, -1],
+      drawsCursor: () => true
+    }],
+    cursorVisibility: 'visible',
     ...options,
   });
   vr.render = function() {
