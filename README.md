@@ -218,3 +218,28 @@ Congratulations! You now have a 3D model that animates! 🎉🌟
 ## Task X - Deploy your project! 
 
 
+not finished!! 
+cd into your react vr project
+
+run npm run bundle - This will create a production version of your application. It can take some time to complete. 
+
+Now we have a build folder inside or vr folder. 
+
+go ahead and look into build/index.html file and change line 9 
+
+from 
+    <script src="./client.bundle?platform=vr"></script>
+
+to 
+    <script src="./client.bundle.js"></script>
+
+and line 15 from
+
+        '../index.vr.bundle?platform=vr&dev=true',
+
+to 
+        '../index.bundle.js',
+
+
+If you use any external assets (asset()), you'll also want to copy your static_assets directory alongside your files so that they can be referenced by your application. At this point, your directory structure should resemble the following:
+
