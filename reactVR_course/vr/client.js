@@ -15,6 +15,7 @@ function init(bundle, parent, options) {
       drawsCursor: () => true
     }],
     cursorVisibility: 'visible',
+    enableHotReload: true,
     ...options,
   });
   vr.render = function() {

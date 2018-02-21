@@ -25,7 +25,7 @@ export default class DeathStar extends React.Component {
       this.state.spin,
       {
        toValue: 1,
-       duration: 5000,
+       duration: 10000,
        easing: Easing.linear
       }
     ).start( () => this.spinAnimation());

@@ -2,6 +2,7 @@ import React from 'react'
 import {Animated, View, Box, Sphere, Cylinder} from 'react-vr'
 
 import Shape from './Shape'
+import DeathStar from './DeathStar.vr.js';
 
 function getRandomNumber(min, max) {
   return Math.round( Math.random() * (max - min) + min);
@@ -16,6 +17,14 @@ function randomShapeXZ() {
       zPosition: getRandomNumber(-7, 7),
       xPosition: getRandomNumber(-7, 7)
     }
+}
+
+function getRandomCoordinates(min, max) {
+  const randomCoordinates = [0,0,0];
+  randomCoordinates.forEach( (coor, i) => {
+    randomCoordinates[i] = getRandomNumber(min, max);
+  })
+  return randomCoordinates;
 }
 
 function randomComponents(num) {
@@ -98,6 +107,7 @@ export default class ShapeGenerator extends React.Component {
               />);
           })
         }
+        <DeathStar coordinates={getRandomCoordinates(-Y_POSITION, Y_POSITION)}/>
       </View>
     );
   }
