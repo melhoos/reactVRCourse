@@ -6,16 +6,16 @@ class Shape extends React.Component {
     super();
 
     this.state = {
-      color: ''
+      opacity: 1
     }
   }
 
   render() {
     const {yPosition, zPosition, xPosition, component, componentProps} = this.props;
     const Component = component;
-    const {color} = this.state;
+    const {opacity} = this.state;
 
-    const props = {...componentProps, style: { color: color ? color : componentProps.style.color}};
+    const props = {...componentProps, style: { opacity: opacity}};
     return (
       <View
         style={{
@@ -24,10 +24,14 @@ class Shape extends React.Component {
           ]
         }}
         onEnter={() => {
-          this.setState({color: 'white'});
+          this.setState({
+            opacity: 0.2
+          });
         }}
         onExit={() => {
-          this.setState({color: ''});
+          this.setState({
+            opacity: 1
+          });
         }}
       >
         <Component {...props}/>
