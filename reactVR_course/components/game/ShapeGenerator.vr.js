@@ -48,7 +48,7 @@ function randomComponents(num) {
 const SHAPES = [
   {component: Box, defaultProps: {dimWidth: 0.6, dimHeight:0.6, dimDepth: 0.6, wireframe: true}},
   {component: Sphere, defaultProps: {radius: 0.5, widthSegments: 20, heightSegments: 12, wireframe: true}},
-  {component: Cylinder, defaultProps: {radiusTop: 0.5, radiusBottom: 0.5, dimHeight: 2, segments: 12, wireframe: true}}
+  {component: Cylinder, defaultProps: {radiusTop: 0.5, radiusBottom: 0.5, dimHeight: 2, segments: 12, wireframe: true}},
 ];
 
 const COLORS = [
@@ -80,7 +80,7 @@ export default class ShapeGenerator extends React.Component {
 
   startAnimation() {
     Animated.timing(this.state.globalYPosition, {
-      duration: 10000,
+      duration: 20000,
       toValue: -Y_POSITION
     }).start((o) => {
       if (o.finished) {
