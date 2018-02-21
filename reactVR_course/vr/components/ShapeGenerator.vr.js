@@ -3,24 +3,18 @@ import {Animated, View, Box, Sphere, Cylinder} from 'react-vr'
 
 import Shape from './Shape'
 
+function getRandomNumber(min, max) {
+  return Math.round( Math.random() * (max - min) + min);
+}
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * max) + min;
 }
 
-function randomSign(num) {
-  return Math.random() < 0.5
-    ? -num
-    : num;
-}
-
-function randomNumber(min, max) {
-  return randomSign(randomBetween(min, max));
-}
-
 function randomShapeXZ() {
   return {
-    zPosition: randomNumber(4, 7),
-    xPosition: randomNumber(4, 7)
+    zPosition: getRandomNumber(-7, 7),
+    xPosition: getRandomNumber(-7, 7)
   };
 }
 
@@ -57,7 +51,7 @@ const COLORS = [
 ];
 
 const NUM_COMPONENTS = 10;
-const Y_POSITION = 4;
+const Y_POSITION = 7;
 
 export default class ShapeGenerator extends React.Component {
   constructor() {
@@ -90,18 +84,20 @@ export default class ShapeGenerator extends React.Component {
 
   render() {
     const {globalYPosition, components} = this.state;
-    return (<View>
-      {
-        components.map((componentConf, index) => {
-          const {component, xPosition, zPosition, componentProps} = componentConf;
-          return (
-            <Shape
-              key={index}
-              component={component}
-              componentProps={componentProps}
-              xPosition={xPosition} yPosition={globalYPosition} zPosition={zPosition}/>);
-        })
-      }
-    </View>);
+    return (
+      <View>
+        {
+          components.map((componentConf, index) => {
+            const {component, xPosition, zPosition, componentProps} = componentConf;
+            return (
+              <Shape
+                key={index}
+                component={component}
+                componentProps={componentProps}
+                xPosition={xPosition} yPosition={globalYPosition} zPosition={zPosition}
+              />);
+          })
+        }
+      </View>);
   }
 }
