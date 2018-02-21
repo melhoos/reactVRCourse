@@ -6,16 +6,16 @@ import Shape from './Shape'
 function getRandomNumber(min, max) {
   return Math.round( Math.random() * (max - min) + min);
 }
-
+  
 function randomBetween(min, max) {
   return Math.floor(Math.random() * max) + min;
 }
 
 function randomShapeXZ() {
-  return {
-    zPosition: getRandomNumber(-7, 7),
-    xPosition: getRandomNumber(-7, 7)
-  };
+    return {
+      zPosition: getRandomNumber(-7, 7),
+      xPosition: getRandomNumber(-7, 7)
+    }
 }
 
 function randomComponents(num) {
@@ -98,6 +98,7 @@ export default class ShapeGenerator extends React.Component {
               />);
           })
         }
-      </View>);
+      </View>
+    );
   }
 }
