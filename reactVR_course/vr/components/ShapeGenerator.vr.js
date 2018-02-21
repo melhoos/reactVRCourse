@@ -51,7 +51,7 @@ const COLORS = [
 ];
 
 const NUM_COMPONENTS = 10;
-const Y_POSITION = 7;
+const Y_POSITION = 10;
 
 export default class ShapeGenerator extends React.Component {
   constructor() {
