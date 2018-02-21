@@ -13,9 +13,9 @@ class Shape extends React.Component {
   render() {
     const {yPosition, zPosition, xPosition, component, componentProps} = this.props;
     const Component = component;
-    const {opacity} = this.state;
+    const {color, opacity} = this.state;
 
-    const props = {...componentProps, style: { opacity: opacity}};
+    const props = {...componentProps, style: { color: color ? color : componentProps.style.color, opacity: opacity}};
     return (
       <View
         style={{
