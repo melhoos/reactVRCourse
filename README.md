@@ -217,6 +217,15 @@ Congratulations! You now have a 3D model that animates! 🎉🌟
 
 ## Task X - Deploy your project! 
 
+### Mac:
+
+#### Option 1
+
+- Connect both your laptop and mobile to the same network. 
+- Hold "alt" button and press the wifi icon in upper right corner. Then you see something like this:
+
+
+
 
 not finished!! 
 cd into your react vr project
