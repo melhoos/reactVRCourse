@@ -107,6 +107,7 @@ export default class ShapeGenerator extends React.Component {
               />);
           })
         }
+
         <DeathStar coordinates={getRandomCoordinates(-Y_POSITION, Y_POSITION)}/>
       </View>
     );

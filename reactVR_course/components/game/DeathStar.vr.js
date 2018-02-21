@@ -40,6 +40,9 @@ export default class DeathStar extends React.Component {
     const {coordinates} = this.props; 
     const AnimatedModel = Animated.createAnimatedComponent(Model);
     return (
+      <VrButton onClickSound={{
+        mp3: asset('Laser_Blasts.mp3')
+      }}>
       <AnimatedModel
         wireframe={false}
         source={{
@@ -53,6 +56,7 @@ export default class DeathStar extends React.Component {
         }}
         texture={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png"}
       />
+      </VrButton>
     );
   }
 };
