@@ -127,21 +127,19 @@ https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
 
 ❓ Add a ```texture``` prop inside your ```<Model/>```, and define it as the url above. Remember, the texture prop always take its argument as a string 😉. Ops! You should also set the ```wireframe``` equal to false. When the ```wireframe``` is true, it will overwrite the texture 😬. 
 
-## Task 4 - Add animation and sound effect to your 3D Model! 💥
+## Task 4 - Add animation to your 3D Model! 💥
+Now lets add some animation to our 3D component 🤓! In this task we will learn how to make the **death-star.obj** spin itself and play a sound whenever clicking on it! 
 
-
-Now lets add some animation to our 3D component! In this task we will learn how to make the **death-star.obj** spin itself in y-direction. 
-
-❓ Import ```Animated``` and convert your Model to an ```AnimatedModel``` by defining it as described below inside your ```render``` function. Change the ```Model``` to ```AnimatedModel```.
+❓ In file **introduction/intro3dModel.vr.js** import ```Animated``` and convert your Model to an ```AnimatedModel``` by defining it as described below inside your ```render``` function. Change the ```Model``` to ```AnimatedModel```.
 
 ```
 const AnimatedModel = Animated.createAnimatedComponent(Model);
 ```
 
-❓ In order to make the **death-star.obj** spin we need to define its local state when first load the app. This state should be an Animated.Value Lets define the components state:
+❓ In order to make the **death-star.obj** spin we need to define its local state when first load the app. This state should be an Animated.Value. Lets define the components state:
 
 ```
-export default class reactVR_course extends React.Component {
+export default class Intro3DModel extends React.Component {
   constructor() {
     super();
     this.state = { 
@@ -152,13 +150,13 @@ export default class reactVR_course extends React.Component {
 }
 ```
 
-❓ Next go ahead and bind the ```spin``` inside the styling of our ```AnimatedModel```. **Hint:** use the ```rotateY``` 😜. 
+❓ Next go ahead and bind the ```spin``` you declared inside the state to the styling of our ```AnimatedModel```. **Hint:** use the ```rotateY``` 😜. 
 
 Is it spinning? 🤔
 
-Nope 👻! We need to do a little more coding before it actually spins! We need to tell the React Component it should start spinning when it reloads the code! In order to this, we are going to use ```componentDidMount()``` function. ```componentDidMount()``` function is one of React's lifecyscles methods and it is invoked immediately after a component is mounted. 
+Nope 👻! We need to do a little more coding before it actually spins! We need to tell the React Component it should start spinning when it renders! In order to this, we are going to use ```componentDidMount()``` function. ```componentDidMount()``` function is one of React's lifecyscles methods and it is invoked immediately after a component is mounted. 
 
-❓ Define the componentDidMount() function insde your React component. Use the ```Animated.timing``` in order to specify the rotation value from 0 to 1 in 5 seconds. Ops. Remember that the duration is measured in ms 😇.
+❓ Define the ```componentDidMount()``` function insde your React component. Use the ```Animated.timing``` in order to specify the rotation value from 0 to 1 in 5 seconds. Ops. Remember that the duration is measured in ms 😇.
 
 ```
   componentDidMount() {
@@ -174,11 +172,11 @@ Nope 👻! We need to do a little more coding before it actually spins! We need 
 
 Is it still not working? 😳
 
-This is because rotate transformations have to be strings and not an ```Animated.Value``` as we have set in our state according to the [React VR official documentation](https://facebook.github.io/react-vr/docs/transforms.html#props).
+This is because according to the [React VR official documentation](https://facebook.github.io/react-vr/docs/transforms.html#props) rotate transformations have to be strings and not an ```Animated.Value``` as we have set in our state.
 
 ![Transformation documentation from ReactVR](https://image.ibb.co/in6o87/Screen_Shot_2018_02_18_at_11_55_23.png)
 
-Inside our ```componentDidMount()``` function we are changing the value from 0 to 1, but the ```rotateY``` prop expects is a rotation value as string of "0deg" to "360deg". How can we reinterpreted the value 0 to 1 as the string "0deg" to "360deg"? 🤔 
+Inside our ```componentDidMount()``` function we are changing the value from 0 to 1, but the ```rotateY``` prop expects is a rotation value as degree or as a string of "0deg" to "360deg". How can we reinterpreted the value 0 to 1 as the string "0deg" to "360deg"? 🤔 
 
 Luckly we can achieve this using _interpolate_ 🤗.
 
@@ -194,29 +192,16 @@ Luckly we can achieve this using _interpolate_ 🤗.
 ```
 
 It is spins! 🎉🎈😄
-![Death-star spinning](https://cdn-images-1.medium.com/max/1600/1*5PQi0QMqTVgQxnwxXgrsCw.gif)
 
-❓ Lets clean up our code a little bit and move the right side of the ```rotateY:``` into a separate constant inside our render function and call it for ```spin```. So the the ```AnimatedModel``` should look something like this: 
+❓ Lets clean up our code a little bit and move the right side of the ```rotateY:``` into a separate constant inside our render function and call it for ```spinYValue```. So the the ```rotateY``` should look something like this: 
 
 ```
-<AnimatedModel
-    wireframe={false}
-    source={{
-        obj: asset('death-star.obj'),
-    }}
-    style={{
-        transform: [
-            {translate: [2,0,-4]},
-            {rotateY: spin}
-        ]
-    }}
-    texture={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png"}
-    />
+    {rotateY: spinYValue}
 ```
 
 But the **death-star.obj** only spins one time 🤔. We want to make it loop! 😁
 
-❓ Move everything that is inside the ```componentDidMount()``` function to a separate function. Name the function for ```spinAnimation()``` and call it from the ```componentDidMount()``` function. Remember to write ```this.spinAnimation()``` in order to call it! 
+❓ Move everything that is inside the ```componentDidMount()``` function into a separate function. Name the function for ```spinAnimation()``` and call it from the ```componentDidMount()``` function. Remember to write ```this``` in front the functio-name in order to call it! 
 
 ❓ In order for us to repeat the function, we must call the ```this.spinAnimation()``` repeatedly. Add the following code inside your ```spinAnimation()```.
 
@@ -228,7 +213,7 @@ Still not spinning more than one time? 😧
 
 The explanation to this is that the ```this.state.spin``` value is already equal to 1 when we redo the ```spinAnimation()``` function. Therefore we need to set the ```this.state.spin``` value back to value 0. 
 
-❓ Set ```this.state.spin``` value to 0 in the beginning of the ```spinAimation()``` function.
+❓ Set ```this.state.spin``` value to 0 in the beginning of the ```spinAimation()``` function. 
 
 Hurray! It is spinning! 😃 👏
 
@@ -238,8 +223,54 @@ But as you may see, the spinning slows down at the end of the rotation. If you d
 
 Congratulations! You now have a 3D model that animates! 🎉🌟
 
-## Task 5 - 
+## Task 5 - Get to know the VrButton and sound effects! 😁
+EyHey! We are soon finish with the introduction part! 👏 The last two things we want to show you is the VRButton and how to add sound effects to your ReactVR app! 
 
+### Let's start with the VrButton.
+
+➡️️️ VrButton is a helper for managing interaction and has no appeance by default. It only acts like a wrapper and can wrap other components. 
+
+❓ In **introduction/Intro3DModel** import ```VrButton``` and wrap the ```<AnimatedModel/>``` component. 
+
+VrButton has many different types of props, some of them are: 
+
+- ```onClick```
+- ```onLongClick```
+- ```onClickSound```
+- ```onEnter```
+- ```onExit```
+
+Please see [documentation](https://facebook.github.io/react-vr/docs/vrbutton.html) for more. 
+
+❓ Let's try to add some interaction with our VrButton! Start by declaring a ```onClickDeathStar()``` function. Inside this function we want to update the xCoordinate to the death-star. We like to make the death-star move from one xCoordinate to another whenever we click on it. Make the logic for toggle the xCoordinate between 0 and 1 whenever we click on the death-star. **Hint** Create a xCoordinate inside the state and update it with ```this.setState()``` 😉.
+
+❓ Bind the function you just created to the ```onClick``` prop! 
+
+```
+onClick={() => this.onEnterDeathStar()}
+```
+
+### Next step: Sound Effect! 
+
+Now we are going to add a sound effect whenever we click on the death-star. Can you guess which prop we are going to use? 😝😏
+
+❓ Go ahead and add the ```onClickSound``` prop to your ```VrButton```. 
+
+In order to trigger the sound effect, we need to define the sound. In **static_assets** folder, we have added one .mp3 file. 
+
+❓ Define the sound! **Hint** ``onClickSound`` takes one argument, and the argument is an object. In this object you define the type of audio format and where you can find it. Since we added a .mp3 file in the **static_assets** folder, the object should look similar to this:  
+
+```
+{
+    mp3: //mp3 file
+}
+```
+
+## Task 6 - Let's make a VR game! 🎮 🎲 👾
+Finally! You are done with the introduction part. Let's go ahead and start creating a ReactVR game! 
+
+
+### Add Cursor / Gaze Button! 
 
 ## Task X - Deploy your project! 
 
