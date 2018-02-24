@@ -8,8 +8,8 @@ export default class IteraGame extends React.Component {
   render() {
     return (
       <View>
-        <Pano source={asset('space.jpg')}/>
-        <ShapeGenerator />
+        <Pano source={asset('island-garden.jpg')}/>
+
       </View>
     );
   }

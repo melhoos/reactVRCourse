@@ -8,7 +8,7 @@ import {
   Cylinder
 } from 'react-vr';
 
-export default class reactVR_course extends React.Component {
+export default class IteraGame extends React.Component {
   render() {
     return (
       <View>
@@ -48,4 +48,4 @@ export default class reactVR_course extends React.Component {
   }
 };
 
-AppRegistry.registerComponent('reactVR_course', () => reactVR_course);
+AppRegistry.registerComponent('IteraGame', () => IteraGame);
