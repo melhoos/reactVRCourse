@@ -1,13 +1,18 @@
 # ReactVR 👀
 
-Welcome to this ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solutions for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😉✌🏼! _Comment: Remove this? - Add the solution folder after the course is finished??_
+Welcome to this ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solutions for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😜✌🏼!
 
 ## Getting Started
 This course requires that you have node installed. Please follow the next steps if you have not installed node before. 
 - ✅ Download the latest stable version from https://nodejs.org. 
-- ✅ To verify, write ```node -v``` in the terminal / console application. You should see a version number returned in your terminal / console application.
-- ✅ To verify that npm is also installed, write ```npm -v``` in the terminal / console application.
-- ✅ After cloning this project, remember to run ```npm install``` before you start this course. 
+- ✅ To verify, write ```node -v``` in the console application. You should see a version number returned in your console application.
+- ✅ To verify that npm is also installed, write ```npm -v``` in the console application.
+
+Another requirement for running this project is Git. Please follow the guide [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install Git if you have not already 🤗. 
+
+Intial the project: 
+- ✅ Direct yourself to the folder you want to include this project and then clone this project by typing ```git clone <link to repo>`` in your console application.
+- ✅ After cloning this project, remember to ```cd``` into the folder (Psst. ```cd``` stand for change directory and is the same as opening the folder in the finder app or directory on you mac/computer) and run ```npm install``` before you start this course 😉.
 
 👉 **Tips:** If you like to create your own ReactVR app, install ReactVR Cli by typing ```npm install react-vr-cli -g``` and then run ```react-vr init [name of your reactVR project]``` to create a new ReactVR project! 😄 We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch! 
 
@@ -16,7 +21,7 @@ This task will explain how you initialize your ReactVR project. Open up the **re
 
 ➡️ Now go back to your terminal / console application and write ```npm start```. 
 
-Ooops! Remember to ```cd``` into the Basic folder, if you have not done so yet! (Psst. ```cd``` stand for change directory and is the same as opening the folder in the finder app or directory on you mac/computer). When the terminal / console is done building your ReactVR project go ahead and open http://localhost:8081/vr/. By the way, loading the page can take some time, expesially the first time you are doing it 🕑 😅...
+Ooops! Remember to ```cd``` into the Basic folder, if you have not done so yet! When the terminal / console is done building your ReactVR project go ahead and open http://localhost:8081/vr/. By the way, loading the page can take some time, expesially the first time you are doing it 🕑 😅...
 
 Open up the **index.vr.js** file, and as you see there are three components inside the reactVR_course React Component. View, Pano and Text. 
 - ```<View>```: This component determinates the view, and you define whatever you want to include inside your view by putting it inside this component. 
