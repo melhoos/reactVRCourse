@@ -49,7 +49,7 @@ There are many other components supported by the react-vr package. For example: 
 
 Do you see the box? 😜
 
-No! 😱 And there is a simple explanation to this! Take a look at the **introduction/IntroBox.vr.js** file. Do you see what is missing? 🤔 You cannot see the ```<Box/>``` component inside your view yet because you haven't included the styling yet! Make sense? 😜
+No! 😱 And there is a simple explanation for this! Take a look at the **introduction/IntroBox.vr.js** file. Do you see what is missing? 🤔 You cannot see the ```<Box/>``` component inside your view yet because you haven't included the styling yet! Make sense? 😜
 
 Since a ```<Box/>``` is not exactly the same as a ```<Text/>``` component, the props will, therefore, be a little different from the Text pros. 
 
@@ -65,7 +65,7 @@ These three first values determinate the width, height, and depth of the ```<Box
 
 Did you check the page? 😨???
 
-We have not told the view **where** to place to ```<Box/>``` component yet 😜. Let us introduce your to the ReactVR coordinates: 
+We have not told the view **where** to place to ```<Box/>``` component yet 😜. Let us introduce you to the ReactVR coordinates: 
 
 ReactVR default coordinates are [0,0,0], i.e. [x,y,z] coordinates. 
 - X coordinate: a positive value brings the component to the right, and a negative value brings the component to the left. 
@@ -118,17 +118,17 @@ source={{
 
 ![Death star 3D model with wireframe](https://image.ibb.co/nJxT87/Screen_Shot_2018_02_18_at_10_53_33.png)
 
-👉 **Tips:** If you like to add your own 3D object, https://clara.io/library has a wide varety of 3D models and formats for exporting 3D models. Remember to download the .obj format (this is the only format ReactVR support at the moment 🙁) and add it in your **/static_assets** folder 😉. Sometimes you get both .obj and .mtl file when downloading a 3D model. I like to think of the .obj file as "the container" and the .mtl file as "the fill" 🙃. 
+👉 **Tips:** If you like to add your own 3D object, https://clara.io/library has a wide variety of 3D models and formats for exporting 3D models. Remember to download the .obj format (this is the only format ReactVR support at the moment 🙁) and add it to your **/static_assets** folder 😉. Sometimes you get both .obj and .mtl file when downloading a 3D model. I like to think of the .obj file as "the container" and the .mtl file as "the fill" 🙃. 
 
-Another way to fill your 3D component is to add a texture! A texture is used for defining the texture to the Model 😝. The ```<Model/>``` component uses the texture if mtl is not specified. 
+Another way to fill your 3D component is to add a texture! A texture is used for defining the texture of the Model 😝. The ```<Model/>``` component uses the texture if mtl is not specified. 
 
 We found a proper texture for the **death-star.obj** here: 
 https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
 
-❓ Add a ```texture``` prop inside your ```<Model/>```, and define it as the url above. Remember, the texture prop always take its argument as a string 😉. Ops! You should also set the ```wireframe``` equal to false. When the ```wireframe``` is true, it will overwrite the texture 😬. 
+❓ Add a ```texture``` prop inside your ```<Model/>```, and define it as the url above. Remember, the texture prop always takes its argument as a string 😉. Ops! You should also set the ```wireframe``` equal to false. When the ```wireframe``` is true, it will overwrite the texture 😬. 
 
 ## Task 4 - Add animation to your 3D Model! 💥
-Now lets add some animation to our 3D component 🤓! In this task we will learn how to make the **death-star.obj** spin itself and play a sound whenever clicking on it! 
+Now, lets add some animation to our 3D component 🤓! In this task, we will learn how to make the **death-star.obj** spin itself and play a sound whenever clicking on it! 
 
 ❓ In file **introduction/intro3dModel.vr.js** import ```Animated``` and convert your Model to an ```AnimatedModel``` by defining it as described below inside your ```render``` function. Change the ```Model``` to ```AnimatedModel```.
 
@@ -154,9 +154,9 @@ export default class Intro3DModel extends React.Component {
 
 Is it spinning? 🤔
 
-Nope 👻! We need to do a little more coding before it actually spins! We need to tell the React Component it should start spinning when it renders! In order to this, we are going to use ```componentDidMount()``` function. ```componentDidMount()``` function is one of React's lifecyscles methods and it is invoked immediately after a component is mounted. 
+Nope 👻! We need to do a little more coding before it actually spins! We need to tell the React Component it should start spinning when it renders! In order to this, we are going to use ```componentDidMount()``` function. ```componentDidMount()``` function is one of React's lifecycles methods and it is invoked immediately after a component is mounted. 
 
-❓ Define the ```componentDidMount()``` function insde your React component. Use the ```Animated.timing``` in order to specify the rotation value from 0 to 1 in 5 seconds. Ops. Remember that the duration is measured in ms 😇.
+❓ Define the ```componentDidMount()``` function inside your React component. Use the ```Animated.timing``` in order to specify the rotation value from 0 to 1 in 5 seconds. Ops. Remember that the duration is measured in ms 😇.
 
 ```
   componentDidMount() {
@@ -178,11 +178,11 @@ This is because according to the [React VR official documentation](https://faceb
 
 Inside our ```componentDidMount()``` function we are changing the value from 0 to 1, but the ```rotateY``` prop expects is a rotation value as degree or as a string of "0deg" to "360deg". How can we reinterpreted the value 0 to 1 as the string "0deg" to "360deg"? 🤔 
 
-Luckly we can achieve this using _interpolate_ 🤗.
+Luckily we can achieve this using _interpolate_ 🤗.
 
 ❓ Instead of using ```rotateY: this.state.spin```, change it to ```rotateY: this.state.spin.interpolate()```.
 
-❓ The ```interpolate()``` function takes one arguement. This argument should be an object that looks like this: 
+❓ The ```interpolate()``` function takes one argument. This argument should be an object that looks like this: 
 
 ```
 {
@@ -191,9 +191,9 @@ Luckly we can achieve this using _interpolate_ 🤗.
 }
 ```
 
-It is spins! 🎉🎈😄
+It spins! 🎉🎈😄
 
-❓ Lets clean up our code a little bit and move the right side of the ```rotateY:``` into a separate constant inside our render function and call it for ```spinYValue```. So the the ```rotateY``` should look something like this: 
+❓ Let's clean up our code a little bit and move the right side of the ```rotateY:``` into a separate constant inside our render function and call it for ```spinYValue```. So the ```rotateY``` should look something like this: 
 
 ```
     {rotateY: spinYValue}
@@ -224,11 +224,11 @@ But as you may see, the spinning slows down at the end of the rotation. If you d
 Congratulations! You now have a 3D model that animates! 🎉🌟
 
 ## Task 5 - Get to know the VrButton and sound effects! 😁
-EyHey! We are soon finish with the introduction part! 👏 The last two things we want to show you is the VRButton and how to add sound effects to your ReactVR app! 
+EyHey! We are soon finished with the introduction part! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app! 
 
 ### Let's start with the VrButton.
 
-➡️️️ VrButton is a helper for managing interaction and has no appeance by default. It only acts like a wrapper and can wrap other components. 
+➡️️️ VrButton is a helper for managing interaction and has no appearance by default. It only acts as a wrapper and can wrap other components. 
 
 ❓ In **introduction/Intro3DModel** import ```VrButton``` and wrap the ```<AnimatedModel/>``` component. 
 
@@ -242,7 +242,7 @@ VrButton has many different types of props, some of them are:
 
 Please see [documentation](https://facebook.github.io/react-vr/docs/vrbutton.html) for more. 
 
-❓ Let's try to add some interaction with our VrButton! Start by declaring a ```onClickDeathStar()``` function. Inside this function we want to update the xCoordinate to the death-star. We like to make the death-star move from one xCoordinate to another whenever we click on it. Make the logic for toggle the xCoordinate between 0 and 1 whenever we click on the death-star. **Hint** Create a xCoordinate inside the state and update it with ```this.setState()``` 😉.
+❓ Let's try to add some interaction with our VrButton! Start by declaring a ```onClickDeathStar()``` function. Inside this function, we want to update the xCoordinate to the death-star. We like to make the death-star move from one xCoordinate to another whenever we click on it. Make the logic for toggle the xCoordinate between 0 and 1 whenever we click on the death-star. **Hint** Create a xCoordinate inside the state and update it with ```this.setState()``` 😉.
 
 ❓ Bind the function you just created to the ```onClick``` prop! 
 
@@ -258,7 +258,7 @@ Now we are going to add a sound effect whenever we click on the death-star. Can 
 
 In order to trigger the sound effect, we need to define the sound. In **static_assets** folder, we have added one .mp3 file. 
 
-❓ Define the sound! **Hint** ``onClickSound`` takes one argument, and the argument is an object. In this object you define the type of audio format and where you can find it. Since we added a .mp3 file in the **static_assets** folder, the object should look similar to this:  
+❓ Define the sound! **Hint** ```onClickSound``` takes one argument, and an argument is an object. In this object, you define the type of audio format and where you can find it. Since we added a .mp3 file in the **static_assets** folder, the object should look similar to this:  
 
 ```
 {
@@ -269,43 +269,21 @@ In order to trigger the sound effect, we need to define the sound. In **static_a
 ## Task 6 - Let's make a VR game! 🎮 🎲 👾
 Finally! You are done with the introduction part. Let's go ahead and start creating a ReactVR game! 
 
-
 ### Add Cursor / Gaze Button! 
 
-## Task X - Deploy your project! 
+// more stuff
 
-### Mac:
+## Task X - Deploy your project! 📱 💻 
+In order to test this on out Phone, we need to connect both your phone and computer on the same network! Please follow the steps below. 
 
-#### Option 1
+- We need to get a hold of your IP address. The simplest way to this on a Mac is to press "alt" button and the wifi icon in the upper right corner. Then you will see something like this: 
 
-- Connect both your laptop and mobile to the same network. 
-- Hold "alt" button and press the wifi icon in upper right corner. Then you see something like this:
+![IP](https://preview.ibb.co/nxQXvx/Screen_Shot_2018_02_20_at_18_14_34.png)
 
+- If you don't have a Mac, another way to get ahold of your IP is to type ```ifconfig``` (or is it ```ipconfig``` 🤔) in your console application. 
 
+- Open up the browser (preferably Chrome) on your phone and type in: ```http://<Your.IP.Address>:8081/vr/ ```
 
+🎉🎉🎉🎉🎉  
 
-not finished!! 
-cd into your react vr project
-
-run npm run bundle - This will create a production version of your application. It can take some time to complete. 
-
-Now we have a build folder inside or vr folder. 
-
-go ahead and look into build/index.html file and change line 9 
-
-from 
-    <script src="./client.bundle?platform=vr"></script>
-
-to 
-    <script src="./client.bundle.js"></script>
-
-and line 15 from
-
-        '../index.vr.bundle?platform=vr&dev=true',
-
-to 
-        '../index.bundle.js',
-
-
-If you use any external assets (asset()), you'll also want to copy your static_assets directory alongside your files so that they can be referenced by your application. At this point, your directory structure should resemble the following:
-
+Try your Google Cardboard and explore the VR-world! 😄✌🏼
