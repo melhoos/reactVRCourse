@@ -64,7 +64,7 @@ export default class Intro3DModel extends React.Component {
                 }}
                 style={{
                     transform: [
-                        {translate: [xCoordinate, 0, -3]},  // x = 0, y=2, z= -3
+                        {translate: [xCoordinate, 0, -3]},  // x = xCoordinate, y=2, z= -3
                         {rotateY: spinYVale}
                     ]
                 }}

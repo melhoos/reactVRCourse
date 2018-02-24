@@ -273,7 +273,7 @@ Finally! You are done with the introduction part. Let's go ahead and start creat
 
 // more stuff
 
-## Task X - Deploy your project! 📱 💻 
+## Task X - Test your project on your phone! 📱 💻 
 In order to test this on out Phone, we need to connect both your phone and computer on the same network! Please follow the steps below. 
 
 - We need to get a hold of your IP address. The simplest way to this on a Mac is to press "alt" button and the wifi icon in the upper right corner. Then you will see something like this: 
