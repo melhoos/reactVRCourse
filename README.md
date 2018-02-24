@@ -11,7 +11,7 @@ This course requires that you have node installed. Please follow the next steps 
 Another requirement for running this project is Git. Please follow the guide [here](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) to install Git if you have not already 🤗. 
 
 Intial the project: 
-- ✅ Direct yourself to the folder you want to include this project and then clone this project by typing ```git clone <link to repo>`` in your console application.
+- ✅ Direct yourself to the folder you want to include this project and then clone this project by typing ```git clone <link to repo>``` in your console application.
 - ✅ After cloning this project, remember to ```cd``` into the folder (Psst. ```cd``` stand for change directory and is the same as opening the folder in the finder app or directory on you mac/computer) and run ```npm install``` before you start this course 😉.
 
 👉 **Tips:** If you like to create your own ReactVR app, install ReactVR Cli by typing ```npm install react-vr-cli -g``` and then run ```react-vr init [name of your reactVR project]``` to create a new ReactVR project! 😄 We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch! 
