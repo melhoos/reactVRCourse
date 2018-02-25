@@ -1,5 +1,5 @@
 import React from 'react'
-import {View, Text, Animated} from 'react-vr'
+import {VrButton, Text, Animated, asset} from 'react-vr'
 
 class Shape extends React.Component {
   constructor() {
@@ -13,16 +13,18 @@ class Shape extends React.Component {
   render() {
     const {yPosition, zPosition, xPosition, component, componentProps} = this.props;
     const Component = component;
-    const {color, opacity} = this.state;
 
+    const {color, opacity} = this.state;
     const props = {...componentProps, style: { color: color ? color : componentProps.style.color, opacity: opacity}};
     return (
-      <View
+      <VrButton
         style={{
           transform: [
             {translate: [xPosition, yPosition, zPosition]}
           ]
         }}
+        onClick={this.props.onClick}
+        onClickSound={{mp3: asset('Laser_Blasts.mp3')}}
         onEnter={() => {
           this.setState({
             opacity: 0.2
@@ -35,7 +37,7 @@ class Shape extends React.Component {
         }}
       >
         <Component {...props}/>
-    </View>
+    </VrButton>
   );
   }
 }
