@@ -277,7 +277,7 @@ Your goal will be to destroy as many Death Stars as possible before the time run
 
 We want new Death Stars to appear whenever an old one is destroyed. But!! If they were to appear in the same place every time, the game would be too easy 😅. Therefore, we want each new Death Star to appear at a random location in space.
 
-❓ Import the `getRandomCoordinates` function from `ShapeGenerator` in the game folder. We won't worry too much about how the coordinates are generated, but feel free to check out the function yourself to see how its done.
+❓ Import the `getRandomCoordinates` function from `ComponentGenerator` in the helpers folder. We won't worry too much about how the coordinates are generated, but feel free to check out the function yourself to see how its done.
 
 Currently, we only update the x-coordinate whenever the Death Star is hit. We want to update the position in all three directions, and therefore we need to store the x-, y- and z-coordinates in the state.
 

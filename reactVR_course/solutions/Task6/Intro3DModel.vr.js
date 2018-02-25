@@ -8,7 +8,7 @@ import {
 
 import { Easing } from 'react-native';
 
-import { getRandomCoordinates } from '../game/ShapeGenerator';
+import { getRandomCoordinates } from '../../helpers/ComponentGenerator';
 
 export default class Intro3DModel extends React.Component {
     constructor() {
