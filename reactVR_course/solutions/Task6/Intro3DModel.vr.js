@@ -1,19 +1,21 @@
 import React from 'react';
 import {
-    Model, 
+    Model,
     Animated,
     VrButton,
     asset
 } from 'react-vr';
 
-import {Easing} from 'react-native';
+import { Easing } from 'react-native';
+
+import { getRandomCoordinates } from '../game/ShapeGenerator';
 
 export default class Intro3DModel extends React.Component {
     constructor() {
         super();
-        this.state = { 
+        this.state = {
             spin: new Animated.Value(0),
-            xCoordinate: 1
+            coordinates: [0, 0, -3]
         };
     }
 
@@ -30,19 +32,20 @@ export default class Intro3DModel extends React.Component {
             duration: 10000,
             easing: Easing.linear
             }
-        ).start( () => this.spinAnimation()); 
+        ).start( () => this.spinAnimation());
     }
 
     onClickDeathStar() {
-        const {xCoordinate} = this.state;
+        const {coordinates} = this.state;
         this.setState({
-            xCoordinate: xCoordinate == 1 ? 2 : 1
+            coordinates: getRandomCoordinates(1, 5)
         })
     }
 
+
   render() {
     const AnimatedModel = Animated.createAnimatedComponent(Model);
-    const {spin, xCoordinate} = this.state;
+    const {spin, coordinates} = this.state;
     const spinYVale = this.state.spin.interpolate(
         {
             inputRange: [0, 1],
@@ -50,7 +53,7 @@ export default class Intro3DModel extends React.Component {
         }
     )
     return (
-        <VrButton 
+        <VrButton
             onClick={() => this.onClickDeathStar()}
             onClickSound={{
                 mp3: asset('Laser_Blasts.mp3')
@@ -63,7 +66,7 @@ export default class Intro3DModel extends React.Component {
                 }}
                 style={{
                     transform: [
-                        {translate: [xCoordinate, 0, -3]},  // x = xCoordinate, y=0, z= -3
+                        {translate: coordinates},
                         {rotateY: spinYVale}
                     ]
                 }}

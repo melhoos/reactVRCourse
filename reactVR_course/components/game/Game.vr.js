@@ -10,7 +10,7 @@ const NUM_COMPONENTS = 10;
 const Y_POSITION = 8;
 const TIME_PER_ROUND = 15;
 
-export default class ShapeGenerator extends React.Component {
+export default class Game extends React.Component {
   constructor() {
     super();
 
