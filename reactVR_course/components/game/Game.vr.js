@@ -14,13 +14,15 @@ export default class ShapeGenerator extends React.Component {
     super();
 
     this.startAnimation = this.startAnimation.bind(this);
+    this.getNextRoundState = this.getNextRoundState.bind(this);
     this.onShootShape = this.onShootShape.bind(this);
 
     this.state = {
       globalYPosition: new Animated.Value(Y_POSITION),
       components: randomComponents(NUM_COMPONENTS),
+      deathStarPosition: getRandomCoordinates(-Y_POSITION, Y_POSITION),
       score: 0,
-
+      round: 0
     }
   }
 
@@ -34,20 +36,31 @@ export default class ShapeGenerator extends React.Component {
       toValue: -Y_POSITION
     }).start((o) => {
       if (o.finished) {
-        this.state.globalYPosition.setValue(Y_POSITION);
-        this.setState({components: randomComponents(NUM_COMPONENTS)});
-        this.startAnimation();
+        this.setState(this.getNextRoundState());
       }
     });
   }
 
-  onShootShape(hitPoint=-1) {
-    return () => this.setState({score: this.state.score + hitPoint});
+  getNextRoundState() {
+    this.state.globalYPosition.setValue(Y_POSITION);
+    this.startAnimation();
+    return {
+      components: randomComponents(NUM_COMPONENTS),
+      deathStarPosition: getRandomCoordinates(-Y_POSITION, Y_POSITION),
+      round: this.state.round + 1
+    };
+
+  }
+
+  onShootShape(clickPoint, resetOnClick=false) {
+    return () => {
+      const resetState = resetOnClick ? this.getNextRoundState() : {};
+      this.setState({score: this.state.score + clickPoint, ...resetState});
+    }
   }
 
   render() {
-    const {globalYPosition, components, score} = this.state;
-    console.log(score);
+    const {globalYPosition, components, deathStarPosition, score, round} = this.state;
     return (
       <View>
         {
@@ -58,13 +71,13 @@ export default class ShapeGenerator extends React.Component {
                 key={index}
                 component={component}
                 componentProps={componentProps}
-                onClick={this.onShootShape()}
+                onClick={this.onShootShape(-1)}
                 xPosition={xPosition} yPosition={globalYPosition} zPosition={zPosition}
               />
             );
           })
         }
-        <DeathStar coordinates={getRandomCoordinates(-Y_POSITION, Y_POSITION)} onClick={this.onShootShape(1)}/>
+        <DeathStar coordinates={deathStarPosition} onClick={this.onShootShape(1, true)}/>
       </View>
     );
   }
