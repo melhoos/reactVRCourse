@@ -22,13 +22,13 @@ function init(bundle, parent, options) {
 
   const vr = new VRInstance(bundle, 'IteraGame', parent, {
     // Add custom options here
-    raycasters: [{
+    /* raycasters: [{
       getType: () => "simple",
       getRayOrigin: () => [0, 0, 0],
       getRayDirection: () => [0, 0, -1],
       drawsCursor: () => true
     }],
-    cursorVisibility: 'visible',
+    cursorVisibility: 'visible', */
     enableHotReload: true,
     ...options,
     // Register dom overlay module upon initialization.
