@@ -1,5 +1,5 @@
 import React from 'react'
-import {Animated, View} from 'react-vr'
+import {Animated, View, NativeModules} from 'react-vr'
 
 import Shape from './Shape'
 import DeathStar from './DeathStar.vr.js';
@@ -8,6 +8,7 @@ import {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGen
 
 const NUM_COMPONENTS = 10;
 const Y_POSITION = 8;
+const TIME_PER_ROUND = 15;
 
 export default class ShapeGenerator extends React.Component {
   constructor() {
@@ -19,6 +20,7 @@ export default class ShapeGenerator extends React.Component {
 
     this.state = {
       globalYPosition: new Animated.Value(Y_POSITION),
+      globalTimer: TIME_PER_ROUND,
       components: randomComponents(NUM_COMPONENTS),
       deathStarPosition: getRandomCoordinates(-Y_POSITION, Y_POSITION),
       score: 0,
@@ -32,7 +34,7 @@ export default class ShapeGenerator extends React.Component {
 
   startAnimation() {
     Animated.timing(this.state.globalYPosition, {
-      duration: 15000,
+      duration: TIME_PER_ROUND * 1000,
       toValue: -Y_POSITION
     }).start((o) => {
       if (o.finished) {
@@ -43,13 +45,14 @@ export default class ShapeGenerator extends React.Component {
 
   getNextRoundState() {
     this.state.globalYPosition.setValue(Y_POSITION);
+
     this.startAnimation();
+
     return {
       components: randomComponents(NUM_COMPONENTS),
       deathStarPosition: getRandomCoordinates(-Y_POSITION, Y_POSITION),
       round: this.state.round + 1
     };
-
   }
 
   onShootShape(clickPoint, resetOnClick=false) {
@@ -60,7 +63,8 @@ export default class ShapeGenerator extends React.Component {
   }
 
   render() {
-    const {globalYPosition, components, deathStarPosition, score, round} = this.state;
+    const {globalYPosition, globalTimer, components, deathStarPosition, score, round} = this.state;
+    NativeModules.DomOverlayModule.openOverlay({time: globalTimer, score: score, round: round + 1});
     return (
       <View>
         {
@@ -72,7 +76,9 @@ export default class ShapeGenerator extends React.Component {
                 component={component}
                 componentProps={componentProps}
                 onClick={this.onShootShape(-1)}
-                xPosition={xPosition} yPosition={globalYPosition} zPosition={zPosition}
+                xPosition={xPosition}
+                yPosition={globalYPosition}
+                zPosition={zPosition}
               />
             );
           })
