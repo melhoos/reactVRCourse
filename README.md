@@ -301,7 +301,7 @@ Try to click the first Death Star that appears in front of you when starting you
 
 ❓ Inside our **vr/client.js** file, we have added a cursor. Please remove the block comments from both the `cursorVisibility` and `raycasters`. 
 
-From now on, you will see a white dot in the middle of your screen. This dot will represent your trigger point. If you like to click at something, you need to make sure that your white dot is hovering over it ✌🏼😜.
+From now on, you will see a white dot in the middle of your screen. This dot will represent your trigger point. If you like to click on something, you need to make sure that your white dot is hovering over it ✌🏼😜.
 
 ## Task X - Test your project on your phone! 📱 💻
 In order to test this on our phone, we need to connect both our phone and computer on the same network! Please follow the steps below.
