@@ -7,7 +7,7 @@ import DeathStar from './DeathStar.vr.js';
 function getRandomNumber(min, max) {
   return Math.round( Math.random() * (max - min) + min);
 }
-  
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * max) + min;
 }
@@ -19,7 +19,7 @@ function randomShapeXZ() {
     }
 }
 
-function getRandomCoordinates(min, max) {
+export function getRandomCoordinates(min, max) {
   const randomCoordinates = [0,0,0];
   randomCoordinates.forEach( (coor, i) => {
     randomCoordinates[i] = getRandomNumber(min, max);
