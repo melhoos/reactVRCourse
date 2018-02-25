@@ -1,7 +1,5 @@
 import React from 'react';
-import {AppRegistry, asset, Pano, View, NativeModules} from 'react-vr';
-
-import IntroText from './components/introduction/IntroText';
+import {AppRegistry, asset, Pano, View} from 'react-vr';
 import Game from './components/game/Game';
 
 export default class IteraGame extends React.Component {

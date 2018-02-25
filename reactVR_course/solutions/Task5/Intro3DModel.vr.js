@@ -40,7 +40,6 @@ export default class Intro3DModel extends React.Component {
         })
     }
 
-
   render() {
     const AnimatedModel = Animated.createAnimatedComponent(Model);
     const {spin, xCoordinate} = this.state;
@@ -64,7 +63,7 @@ export default class Intro3DModel extends React.Component {
                 }}
                 style={{
                     transform: [
-                        {translate: [xCoordinate, 0, -3]},  // x = xCoordinate, y=2, z= -3
+                        {translate: [xCoordinate, 0, -3]},  // x = xCoordinate, y=0, z= -3
                         {rotateY: spinYVale}
                     ]
                 }}
