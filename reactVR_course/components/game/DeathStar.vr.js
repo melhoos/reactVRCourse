@@ -10,7 +10,7 @@ import { Easing } from 'react-native';
 export default class DeathStar extends React.Component {
   constructor() {
     super();
-    this.state = { 
+    this.state = {
       spin: new Animated.Value(0)
     };
   }
@@ -37,12 +37,13 @@ export default class DeathStar extends React.Component {
       outputRange: ['0deg', '360deg']
     });
 
-    const {coordinates} = this.props; 
+    const {coordinates} = this.props;
     const AnimatedModel = Animated.createAnimatedComponent(Model);
     return (
-      <VrButton onClickSound={{
-        mp3: asset('Laser_Blasts.mp3')
-      }}>
+      <VrButton
+        onClick={this.props.onClick}
+        onClickSound={{mp3: asset('Laser_Blasts.mp3')}}
+      >
       <AnimatedModel
         wireframe={false}
         source={{

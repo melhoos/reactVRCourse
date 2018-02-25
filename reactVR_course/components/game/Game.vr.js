@@ -7,21 +7,20 @@ import DeathStar from './DeathStar.vr.js';
 import {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGenerator';
 
 const NUM_COMPONENTS = 10;
-const Y_POSITION = 10;
+const Y_POSITION = 8;
 
 export default class ShapeGenerator extends React.Component {
   constructor() {
     super();
 
     this.startAnimation = this.startAnimation.bind(this);
-    this.shapeOnExit = this.shapeOnExit.bind(this);
-    this.shapeOnEnter = this.shapeOnEnter.bind(this);
+    this.onShootShape = this.onShootShape.bind(this);
 
     this.state = {
       globalYPosition: new Animated.Value(Y_POSITION),
       components: randomComponents(NUM_COMPONENTS),
-      scoreFunction: () => {},
-      score: 0
+      score: 0,
+
     }
   }
 
@@ -31,7 +30,7 @@ export default class ShapeGenerator extends React.Component {
 
   startAnimation() {
     Animated.timing(this.state.globalYPosition, {
-      duration: 20000,
+      duration: 15000,
       toValue: -Y_POSITION
     }).start((o) => {
       if (o.finished) {
@@ -42,14 +41,8 @@ export default class ShapeGenerator extends React.Component {
     });
   }
 
-  shapeOnEnter() {
-    this.setState({scoreFunction: () => {
-      this.setState({score: this.state.score + 1});
-    }});
-  }
-
-  shapeOnExit() {
-    this.setState({scoreFunction: () => {}});
+  onShootShape(hitPoint=-1) {
+    return () => this.setState({score: this.state.score + hitPoint});
   }
 
   render() {
@@ -65,13 +58,13 @@ export default class ShapeGenerator extends React.Component {
                 key={index}
                 component={component}
                 componentProps={componentProps}
+                onClick={this.onShootShape()}
                 xPosition={xPosition} yPosition={globalYPosition} zPosition={zPosition}
               />
             );
           })
         }
-
-        <DeathStar coordinates={getRandomCoordinates(-Y_POSITION, Y_POSITION)}/>
+        <DeathStar coordinates={getRandomCoordinates(-Y_POSITION, Y_POSITION)} onClick={this.onShootShape(1)}/>
       </View>
     );
   }
