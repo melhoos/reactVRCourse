@@ -3,7 +3,7 @@
   position: fixed;
   z-index: 10000000000000;
   top: 0px;
-  left: 0px;
+  left: 15%;
   color: #fff;
   background-color: rgba(0,0,0,0.5);
   overflow: auto;
@@ -15,8 +15,8 @@
   box-sizing: border-box;
   width: 100%;
   padding: 10px 20px;
+  text-align: center;
 }
 .score {
   font-size: 30pt;
-  text-align: center;
 }
