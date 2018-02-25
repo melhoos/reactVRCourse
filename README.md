@@ -73,13 +73,14 @@ ReactVR default coordinates are [0,0,0], i.e. [x,y,z] coordinates.
 - Z coordinate: a positive value brings the component behind you and a negative value brings the component in front of you **(❗️❗️)**.
 
 In order to tell the component, it's position, you need to add a styling prop, and use the `transform` inside it. Something like this:
-`
+
+```
 style={{
     transform: [
         {translate: [?, ?, ?]},
     ]
 }}
-`
+```
 
 ❓ Add the transform prop and coordinates to the Box component inside the **IntroBox** component. Ops! If you place the `<Box/>`  component the same place or close to the `<Text/>`  component it may be hard to see 😜. Make sure that they don't collide ✌🏼.
 
@@ -106,11 +107,11 @@ You might already notice that we have added a **death-star.obj** inside the **/s
 
 ❓ Then we need to tell the `<Model/>` component to use the **death-star.obj** as its source. Add a `source` prop inside your `<Model/>` component and define the obj file.
 
-`
+```
 source={{
         obj: asset('objFileNameHere'),
     }}
-`
+```
 
 ❓ In addition, add the transform styling, as you did for the `<Box/` component in the previous task. If you don't do this, the ReactVR will use it's default coordinates. Do you remember what it was? 😜
 
@@ -138,7 +139,7 @@ const AnimatedModel = Animated.createAnimatedComponent(Model);
 
 ❓ In order to make the **death-star.obj** spin we need to define its local state when first load the app. This state should be an Animated.Value. Lets define the components state:
 
-`
+```
 export default class Intro3DModel extends React.Component {
   constructor() {
     super();
@@ -148,7 +149,7 @@ export default class Intro3DModel extends React.Component {
   }
   //more stuff
 }
-`
+```
 
 ❓ Next go ahead and bind the `spin` you declared inside the state to the styling of our `AnimatedModel`. **Hint:** use the `rotateY` 😜.
 
@@ -158,7 +159,7 @@ Nope 👻! We need to do a little more coding before it actually spins! We need 
 
 ❓ Define the `componentDidMount()` function inside your React component. Use the `Animated.timing` in order to specify the rotation value from 0 to 1 in 5 seconds. Ops. Remember that the duration is measured in ms 😇.
 
-`
+```
   componentDidMount() {
     Animated.timing(
       this.state.spin,
@@ -168,7 +169,7 @@ Nope 👻! We need to do a little more coding before it actually spins! We need 
       }
     ).start();
   }
-`
+```
 
 Is it still not working? 😳
 
@@ -184,20 +185,20 @@ Luckily we can achieve this using _interpolate_ 🤗.
 
 ❓ The `interpolate()` function takes one argument. This argument should be an object that looks like this:
 
-`
+```
 {
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg']
 }
-`
+```
 
 It spins! 🎉🎈😄
 
 ❓ Let's clean up our code a little bit and move the right side of the `rotateY:` into a separate constant inside our render function and call it for `spinYValue`. So the `rotateY` should look something like this:
 
-`
+```
     {rotateY: spinYValue}
-`
+```
 
 But the **death-star.obj** only spins one time 🤔. We want to make it loop! 😁
 
@@ -205,9 +206,9 @@ But the **death-star.obj** only spins one time 🤔. We want to make it loop! �
 
 ❓ In order for us to repeat the function, we must call the `this.spinAnimation()` repeatedly. Add the following code inside your `spinAnimation()`.
 
-`
+```
 ).start( () => this.spinAnimation());
-`
+```
 
 Still not spinning more than one time? 😧
 
@@ -246,9 +247,9 @@ Please see [documentation](https://facebook.github.io/react-vr/docs/vrbutton.htm
 
 ❓ Bind the function you just created to the `onClick` prop!
 
-`
+```
 onClick={() => this.onEnterDeathStar()}
-`
+```
 
 ### Next step: Sound Effect!
 
@@ -260,11 +261,11 @@ In order to trigger the sound effect, we need to define the sound. In **static_a
 
 ❓ Define the sound! **Hint** `onClickSound` takes one argument, and an argument is an object. In this object, you define the type of audio format and where you can find it. Since we added a .mp3 file in the **static_assets** folder, the object should look similar to this:  
 
-`
+```
 {
     mp3: //mp3 file
 }
-`
+```
 
 ## Task 6 - Let's make a VR game! 🎮 🎲 👾
 Finally! You are done with the introduction part. Let's go ahead and start creating a ReactVR game!
