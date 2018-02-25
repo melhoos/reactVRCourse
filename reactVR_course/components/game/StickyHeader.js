@@ -17,13 +17,6 @@ class StickyHeader extends React.Component {
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-    console.log(nextProps, this.props);
-    if (nextProps.round !== this.props.round) {
-      this.updateTime(true);
-    }
-  }
-
   componentDidMount() {
     this.updateTime();
   }
@@ -41,13 +34,12 @@ class StickyHeader extends React.Component {
 
   render() {
     const {time} = this.state;
-    const {score, round} = this.props;
+    const {score} = this.props;
     return (
       <div className="container">
         <div className="content">
           <div className="score">Poeng: {score}</div>
           <div className="time">Tid: {time} s</div>
-          <div className="round">Runde: {round}</div>
         </div>
       </div>
     );
