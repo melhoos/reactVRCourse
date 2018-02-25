@@ -8,7 +8,6 @@ export default class IteraGame extends React.Component {
     return (
       <View>
         <Pano source={asset('chess-world.jpg')}/>
-
       </View>
     );
   }
