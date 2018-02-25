@@ -7,7 +7,7 @@ import DeathStar from './DeathStar.vr.js';
 function getRandomNumber(min, max) {
   return Math.round( Math.random() * (max - min) + min);
 }
-  
+
 function randomBetween(min, max) {
   return Math.floor(Math.random() * max) + min;
 }
@@ -46,9 +46,9 @@ function randomComponents(num) {
 }
 
 const SHAPES = [
-  {component: Box, defaultProps: {dimWidth: 0.6, dimHeight:0.6, dimDepth: 0.6, wireframe: true}},
-  {component: Sphere, defaultProps: {radius: 0.5, widthSegments: 20, heightSegments: 12, wireframe: true}},
-  {component: Cylinder, defaultProps: {radiusTop: 0.5, radiusBottom: 0.5, dimHeight: 2, segments: 12, wireframe: true}},
+  {component: Box, defaultProps: {dimWidth: 0.6, dimHeight:0.6, dimDepth: 0.6}},
+  {component: Sphere, defaultProps: {radius: 0.5, widthSegments: 20, heightSegments: 12}},
+  {component: Cylinder, defaultProps: {radiusTop: 0.5, radiusBottom: 0.5, dimHeight: 2, segments: 12}}
 ];
 
 const COLORS = [
@@ -67,10 +67,14 @@ export default class ShapeGenerator extends React.Component {
     super();
 
     this.startAnimation = this.startAnimation.bind(this);
+    this.shapeOnExit = this.shapeOnExit.bind(this);
+    this.shapeOnEnter = this.shapeOnEnter.bind(this);
 
     this.state = {
       globalYPosition: new Animated.Value(Y_POSITION),
-      components: randomComponents(NUM_COMPONENTS)
+      components: randomComponents(NUM_COMPONENTS),
+      scoreFunction: () => {},
+      score: 0
     }
   }
 
@@ -91,8 +95,19 @@ export default class ShapeGenerator extends React.Component {
     });
   }
 
+  shapeOnEnter() {
+    this.setState({scoreFunction: () => {
+      this.setState({score: this.state.score + 1});
+    }});
+  }
+
+  shapeOnExit() {
+    this.setState({scoreFunction: () => {}});
+  }
+
   render() {
-    const {globalYPosition, components} = this.state;
+    const {globalYPosition, components, score} = this.state;
+    console.log(score);
     return (
       <View>
         {
@@ -104,7 +119,8 @@ export default class ShapeGenerator extends React.Component {
                 component={component}
                 componentProps={componentProps}
                 xPosition={xPosition} yPosition={globalYPosition} zPosition={zPosition}
-              />);
+              />
+            );
           })
         }
 
