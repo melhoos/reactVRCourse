@@ -1,63 +1,10 @@
 import React from 'react'
-import {Animated, View, Box, Sphere, Cylinder} from 'react-vr'
+import {Animated, View} from 'react-vr'
 
 import Shape from './Shape'
 import DeathStar from './DeathStar.vr.js';
 
-function getRandomNumber(min, max) {
-  return Math.round( Math.random() * (max - min) + min);
-}
-
-function randomBetween(min, max) {
-  return Math.floor(Math.random() * max) + min;
-}
-
-function randomShapeXZ() {
-    return {
-      zPosition: getRandomNumber(-7, 7),
-      xPosition: getRandomNumber(-7, 7)
-    }
-}
-
-function getRandomCoordinates(min, max) {
-  const randomCoordinates = [0,0,0];
-  randomCoordinates.forEach( (coor, i) => {
-    randomCoordinates[i] = getRandomNumber(min, max);
-  })
-  return randomCoordinates;
-}
-
-function randomComponents(num) {
-  var components = [];
-  for (var i = 0; i < num; i++) {
-    const {component, defaultProps} = SHAPES[randomBetween(0, SHAPES.length)]
-    components.push({
-      component,
-      componentProps: {
-        ...defaultProps,
-        style: {
-          color: COLORS[randomBetween(0, COLORS.length)]
-        }
-      },
-      ...randomShapeXZ()
-    });
-  }
-  return components;
-}
-
-const SHAPES = [
-  {component: Box, defaultProps: {dimWidth: 0.6, dimHeight:0.6, dimDepth: 0.6}},
-  {component: Sphere, defaultProps: {radius: 0.5, widthSegments: 20, heightSegments: 12}},
-  {component: Cylinder, defaultProps: {radiusTop: 0.5, radiusBottom: 0.5, dimHeight: 2, segments: 12}}
-];
-
-const COLORS = [
-  'red',
-  'blue',
-  'green',
-  'purple',
-  'yellow'
-];
+import {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGenerator';
 
 const NUM_COMPONENTS = 10;
 const Y_POSITION = 10;
