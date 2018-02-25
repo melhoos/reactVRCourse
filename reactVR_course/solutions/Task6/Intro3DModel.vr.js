@@ -38,7 +38,7 @@ export default class Intro3DModel extends React.Component {
     onClickDeathStar() {
         const {coordinates} = this.state;
         this.setState({
-            coordinates: getRandomCoordinates(1, 5)
+            coordinates: getRandomCoordinates(-5, 5)
         })
     }
 
