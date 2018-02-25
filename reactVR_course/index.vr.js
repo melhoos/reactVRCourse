@@ -2,7 +2,7 @@ import React from 'react';
 import {AppRegistry, asset, Pano, View, NativeModules} from 'react-vr';
 
 import IntroText from './components/introduction/IntroText';
-import ShapeGenerator from './components/game/ShapeGenerator'
+import Game from './components/game/Game';
 
 export default class IteraGame extends React.Component {
   render() {
@@ -13,18 +13,5 @@ export default class IteraGame extends React.Component {
     );
   }
 };
-
-// export default class IteraGame extends React.Component {
-//   render() {
-//     // Use the DOM overlay module to display time and score
-//     NativeModules.DomOverlayModule.openOverlay({time: 20, score: 1000});
-//     return (
-//       <View>
-//         <Pano source={asset('space.jpg')}/>
-//         <ShapeGenerator/>
-//       </View>
-//     );
-//   }
-// };
 
 AppRegistry.registerComponent('IteraGame', () => IteraGame);
