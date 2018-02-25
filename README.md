@@ -311,7 +311,7 @@ In order to test this on our phone, we need to connect both our phone and comput
 
 - If you don't have a Mac, another way to get ahold of your IP is to type `ifconfig` (or is it `ipconfig` 🤔) in your console application.
 
-- Open up the browser (preferably Chrome) on your phone and type in: `http://<Your.IP.Address>:8081/vr/`
+- Open up the browser (preferably Chrome, Safari works fine too ✌🏼) on your phone and type in: `http://<Your.IP.Address>:8081/vr/`
 
 🎉🎉🎉🎉🎉  
 
