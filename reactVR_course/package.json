@@ -16,7 +16,7 @@
     "react-vr": "~2.0.0",
     "react-vr-web": "~2.0.0",
     "three": "^0.87.0",
-    "webvr-polyfill": "^0.10.2"
+    "webvr-polyfill": "immersive-web/webvr-polyfill#a942181d743f382bd7d5f1dba24db232b2ba18ec"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",

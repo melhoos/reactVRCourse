@@ -4,8 +4,11 @@
 
 // Auto-generated content.
 import {VRInstance} from 'react-vr-web';
+import WebVRPolyFill from 'webvr-polyfill';
 
 function init(bundle, parent, options) {
+  // Add polyfill to allow for VR on iOS devices
+  const polyfill = new WebVRPolyFill();
   const vr = new VRInstance(bundle, 'IteraGame', parent, {
     // Add custom options here
     raycasters: [{
