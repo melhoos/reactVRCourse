@@ -15,7 +15,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Module} from 'react-vr-web';
 
-import StickyHeader from './components/game/StickyHeader';
+import StickyHeader from './StickyHeader';
 
 // Example implementation of a dom overlay. This is useful on web and mobile,
 // whenever a regular, 2D interaction makes more sense than dealing with a 360 scene.
