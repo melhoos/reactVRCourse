@@ -274,6 +274,8 @@ In this game, you will get the chance to walk in Luke Skywalker's footsteps and 
 
 Your goal will be to destroy as many Death Stars as possible before the time runs out. May the force be with you! ✨
 
+Before we begin, import the **componenents/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file. 
+
 ### First step: Help build more Death Stars
 
 We want new Death Stars to appear whenever an old one is destroyed. But!! If they were to appear in the same place every time, the game would be too easy 😅. Therefore, we want each new Death Star to appear at a random location in space.
@@ -290,20 +292,61 @@ What should we now do with the coordinates in the `onClickDeathStar` method? Rem
 
 Try to click the first Death Star that appears in front of you when starting your application. Nice job, you destroyed it! 😎🎇 But, wait?! It's not over yet. Move the screen around to find another Death Star at a different location! 😰
 
-### Add a score
+### Add score board
 
-### Add a timer
+We want to be able to view how much time we got left and our score in the game. For that we are going to add a sticky panel which follows our movements in the 3D world. This is done by adding a Native React Module that lives in the 2D world. All native modules are registered in the `nativeModules` field within **vr/client.js**, which holds all Native Modules we want to register.
 
-### Add more components to make the game more difficult
+❓ We have already made a native module helper for you called `StickyPanel`, so all we need to do is enable it! 😉 Please remove the comments inside **vr/client.js** to register our Native Module
 
+❓ Initialize the `StickyPanel` within the render method within **index.vr.js** file by adding the line `NativeModules.DomOverlayModule.openOverlay({time: 30, score: 0})`
+
+You should now see a score board! ✌🏼
+
+### Add game score
+
+We have a sticky score board, great! However, it doesn't update when we destroy death stars. It's time to add some the state to our game. First, we need add an on click handler to update our `score` every time we destroy a death star.
+
+❓ Add an `onClick` method to the `Intro3DModel` component and call it every time a death star is clicked. Also, create a method in **components/game/Game.vr.js** which increments the global game score
+
+❓ Pass the method as props into the `Intro3DModel` component and be sure to our score into the game panel
+
+Superb! Now our score updates every time we destroy a death star
+
+### Add obstacles
+
+To make the game a little more difficult, we are going to add obstacles which appear at random positions and flies through space along a single axis. The obstacles are going to be malicious objects, which steals points from us when clicked on. To save you some time, we have already created a `ComponentGenerator` component inside **helpers/ComponentGenerator**. For now, the generator assumes that we are only moving the objects in the Y direction. The generator can be used in the following way:
+
+```javascript
+<ComponentGenerator yPosition={4} numberOfComponents={10} onClick={() => {console.log("Woops, don't shoot me!")}}/>
+```
+❓ Add the above snippet inside the render method of **Game.vr.js** to take a look at the how the Obstacles are created
+
+❓ In the constructor of **Game.vr.js**, add `Obstacles: () => <ComponentGenerator numberOfComponents={10} .../>`
+
+Great! But we are missing some state handling to complete our game
+
+❓ Add animation to move the obstacles along the Y by adding `globalYPosition` to state which holds the Animated value. Use Animated.timing and move all objects along the Y axis from 8 to -8 over 15 seconds
+
+❓ Add an on click handler to the component generator that decrements our game score by one
+
+Almost done! Notice that the animation does not reset when finished, so we need to add that as well
+
+❓ Make the animation restart when finished, as well as regenerate a new set of Obstacles
 
 ### Add Cursor! 🐭 👆
 
-To make it a little bit more mobile and CardBoard-friendly, we should add a cursor that follows your movements and triggered whenever you touch the screen! 
+To make it a little bit more mobile and CardBoard-friendly, we should add a cursor that follows your movements and triggered whenever you touch the screen!
 
 ❓ We have added `raycasters` and `cursorVisibility` inside the  **vr/client.js** file. Please remove the block comments from both of them.
 
 Great! 😄 Now you will see a white dot in the middle of your screen. This dot will represent your trigger point. If you like to click on something, you need to make sure that your white dot is hovering over it ✌🏼😜.
+
+Our game is as good as done, but if you got any spare time be sure to try solve the extra tasks.
+
+### Extra tasks:
+  - Add start and stop game states to our game and with menus ✌🏼
+  - Generate more random components over time ✌🏼
+  - Extends or create your own ComponentGenerator to make the random components move in random directions ✌🏼
 
 ## Task X - Test your project on your phone! 📱 💻
 In order to test this on our phone, we need to connect both our phone and computer on the same network! Please follow the steps below.
