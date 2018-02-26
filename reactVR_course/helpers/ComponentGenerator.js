@@ -15,24 +15,29 @@ const COLORS = [
 ];
 
 function getRandomNumber(min, max) {
-  return Math.round( Math.random() * (max - min) + min);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function randomBetween(min, max) {
-  return Math.floor(Math.random() * max) + min;
+function getRandomCoordinate(min, max) {
+  let randomCoordinate = 0
+  // we want to avoid objects being placed on top of ourselves
+  while (Math.abs(randomCoordinate) <= 1) {
+    randomCoordinate = Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+  return randomCoordinate;
 }
 
 function randomXZPosition() {
     return {
-      zPosition: getRandomNumber(-7, 7),
-      xPosition: getRandomNumber(-7, 7)
+      zPosition: getRandomCoordinate(-7, 7),
+      xPosition: getRandomCoordinate(-7, 7)
     }
 }
 
 export function getRandomCoordinates(min, max) {
   const randomCoordinates = [0,0,0];
   randomCoordinates.forEach( (coor, i) => {
-    randomCoordinates[i] = getRandomNumber(min, max);
+    randomCoordinates[i] = getRandomCoordinate(min, max);
   })
   return randomCoordinates;
 }
@@ -40,13 +45,13 @@ export function getRandomCoordinates(min, max) {
 export function randomComponents(num) {
   var components = [];
   for (var i = 0; i < num; i++) {
-    const {component, defaultProps} = SHAPES[randomBetween(0, SHAPES.length)]
+    const {component, defaultProps} = SHAPES[getRandomNumber(0, SHAPES.length-1)]
     components.push({
       component,
       componentProps: {
         ...defaultProps,
         style: {
-          color: COLORS[randomBetween(0, COLORS.length)]
+          color: COLORS[getRandomNumber(0, COLORS.length-1)]
         }
       },
       ...randomXZPosition()

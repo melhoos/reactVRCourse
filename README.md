@@ -286,7 +286,7 @@ Currently, we only update the x-coordinate whenever the Death Star is hit. We wa
 
 What should we now do with the coordinates in the `onClickDeathStar` method? Remember that we want the new Death Star to appear at a random location when we destroy the old one.
 
-❓ Use the imported `getRandomCoordinates` function to set the location of the new Death Star. We don't want the Death Star to appear too close or too far away, so set the minimum and maximum value to, for instance, 1 and 5 respectively.
+❓ Use the imported `getRandomCoordinates` function to set the location of the new Death Star. We don't want the Death Star to appear too close or too far away, so set the minimum and maximum value to, for instance, -5 and 5 respectively.
 
 Try to click the first Death Star that appears in front of you when starting your application. Nice job, you destroyed it! 😎🎇 But, wait?! It's not over yet. Move the screen around to find another Death Star at a different location! 😰
 
