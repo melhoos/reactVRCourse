@@ -8,7 +8,7 @@ import {
 
 import { Easing } from 'react-native';
 
-import { getRandomCoordinates } from '../../helpers/ComponentGenerator';
+import { getRandomCoordinates } from '../../../helpers/ComponentGenerator';
 
 export default class Intro3DModel extends React.Component {
     constructor() {
@@ -38,8 +38,9 @@ export default class Intro3DModel extends React.Component {
     onClickDeathStar() {
         const {coordinates} = this.state;
         this.setState({
-            coordinates: getRandomCoordinates(1, 5)
+            coordinates: getRandomCoordinates(-5, 5)
         })
+        this.props.onClick();
     }
 
 

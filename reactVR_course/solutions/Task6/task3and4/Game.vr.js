@@ -1,15 +1,15 @@
 import React from 'react'
 import {Animated, View, NativeModules} from 'react-vr'
 
-import Intro3DModel as DeathStar from './Intro3DModel.vr.js';
+import Intro3DModel from './Intro3DModel.vr.js';
 
-import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGenerator';
+import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../../helpers/ComponentGenerator';
 
 const NUM_COMPONENTS = 10;
 const Y_POSITION = 8;
 const GAME_TIME = 30;
 
-export default class ShapeGenerator extends React.Component {
+export default class Game extends React.Component {
   constructor() {
     super();
 
@@ -58,12 +58,12 @@ export default class ShapeGenerator extends React.Component {
   }
 
   render() {
-    const {Obstacles, deathStarPosition, score, globalYPosition} = this.state;
-    NativeModules.DomOverlayModule.openOverlay({time: globalTimer, score: score});
+    const {Obstacles, deathStarPosition, score, globalYPosition, time} = this.state;
+    NativeModules.DomOverlayModule.openOverlay({time: time, score: score});
       return (
         <View>
           <Obstacles/>
-          <DeathStar coordinates={deathStarPosition} onClick={this.onShootShape(1)}/>
+          <Intro3DModel onClick={this.onShootShape(1)}/>
         </View>
       );
   }
