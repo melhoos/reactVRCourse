@@ -1,4 +1,6 @@
-import {Box, Sphere, Cylinder} from 'react-vr';
+import React from 'react';
+import {View, Box, Sphere, Cylinder} from 'react-vr';
+import Shape from './Shape';
 
 const SHAPES = [
   {component: Box, defaultProps: {dimWidth: 0.6, dimHeight:0.6, dimDepth: 0.6}},
@@ -58,4 +60,42 @@ export function randomComponents(num) {
     });
   }
   return components;
+}
+
+
+export default class ComponentGenerator extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      components: randomComponents(this.props.numberOfComponents)
+    }
+  }
+
+
+  render() {
+    const {components} = this.state;
+    const {yPosition, onClick} = this.props;
+    return (
+      <View>
+        {
+          components.map((componentConf, index) => {
+                  const {component, xPosition, zPosition, componentProps} = componentConf;
+                  return (
+                    <Shape
+                      key={index}
+                      component={component}
+                      componentProps={componentProps}
+                      onClick={onClick}
+                      xPosition={xPosition}
+                      yPosition={yPosition}
+                      zPosition={zPosition}
+                    />
+                  );
+                })
+        }
+      </View>
+    );
+  }
 }

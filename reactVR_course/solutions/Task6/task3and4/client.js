@@ -14,28 +14,27 @@ function init(bundle, parent, options) {
   // Add polyfill to allow for VR on iOS devices
   const polyfill = new WebVRPolyFill();
 
-  // TODO: Comment in to enable Native Module
-  // const domOverlayContainer = document.createElement('div');
-  // domOverlayContainer.id = 'dom-overlay';
-  // const domOverlayModule = new DomOverlayModule(domOverlayContainer);
+  const domOverlayContainer = document.createElement('div');
+  domOverlayContainer.id = 'dom-overlay';
+  const domOverlayModule = new DomOverlayModule(domOverlayContainer);
 
   const vr = new VRInstance(bundle, 'IteraGame', parent, {
     // Add custom options here
-    /* raycasters: [{
+    raycasters: [{
       getType: () => "simple",
       getRayOrigin: () => [0, 0, 0],
       getRayDirection: () => [0, 0, -1],
       drawsCursor: () => true
     }],
-    cursorVisibility: 'visible', */
-    //enableHotReload: true,
+    cursorVisibility: 'visible',
+    enableHotReload: true,
     ...options,
-    // TODO: Comment in to enable Native Module
-    //nativeModules: [domOverlayModule],
+    // Register dom overlay module upon initialization.
+    nativeModules: [domOverlayModule],
   });
 
-  // TODO: Comment in to enable Native Module
-  //vr.player._wrapper.appendChild(domOverlayContainer);
+  // Inject DOM overlay container to the player so that it is rendered properly.
+  vr.player._wrapper.appendChild(domOverlayContainer);
 
   vr.render = function() {
     // Any custom behavior you want to perform on each frame goes here
