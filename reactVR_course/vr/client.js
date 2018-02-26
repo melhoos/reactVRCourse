@@ -29,7 +29,7 @@ function init(bundle, parent, options) {
       drawsCursor: () => true
     }],
     cursorVisibility: 'visible', */
-    enableHotReload: true,
+    // enableHotReload: true,
     ...options,
     // Register dom overlay module upon initialization.
     nativeModules: [domOverlayModule],
