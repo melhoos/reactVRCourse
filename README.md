@@ -34,7 +34,35 @@ Open up the **index.vr.js** file, there are two components inside the IteraGame 
 
 ❓ Go ahead and try to change the pano image to something else! **Hint** : Look into **/static_assets** folder 😉.
 
-## Task 2 - Get to know react-vr!
+## Task 2 - Test your project on your phone! 📱 💻
+You probably can't wait to get the application up and running on your phone, so that you can use your awesome new Itera Google Cardboard! 🤓❤️ For this to work, we need to expose the port where we are running our application locally (8081), to a public URL that we can reach from our phone. A popular tool for accomplishing this is *ngrok*.
+
+First, open a new command line window. Install ngrok globally on your computer like this:
+```
+npm install ngrok -g
+```
+
+Now, run the following command to expose port 8081 to the world 🌎🌍🌏:
+```
+ngrok http 8081
+```
+
+You should get an output looking somewhat like this, with a forwarding URL containing a random ID:
+
+![ngrok](http://preview.ibb.co/chfHtS/image.png)
+
+⚠️ *Note that this ID will change every time you rerun the ngrok command.*
+
+Open up the browser on your phone (preferably Chrome, but Safari works fine too ✌🏼) and type in the following address, replacing the random ID with the ID of your ouput:
+```
+http://<ID>.ngrok.io/vr/
+```
+
+🎉🎉🎉🎉🎉
+
+Put your phone in your Google Cardboard and explore the VR-world 😄✌🏼 Be careful not to let your phone fall out off the sides!! 😅
+
+## Task 3 - Get to know react-vr!
 Before we go ahead and start creating the game, we should get a little bit familiar with the react-vr library. In this task, we will explain how to add different ReactVR components to your view!
 
 ❓ Start by importing **IntroText** from **introduction/IntroText.vr.js** into your **index.vr.js** file and include this in your view.
@@ -94,7 +122,7 @@ And also, if you like to rotate your component, you can use `rotateY`, `rotateX`
 
 ![Box with rotation](https://preview.ibb.co/k71AXc/Screen_Shot_2018_02_24_at_21_01_18.png)
 
-## Task 3 - Add a 3D model! 🤓 🌎
+## Task 4 - Add a 3D model! 🤓 🌎
 Okay, great! Now you know how to add a ReactVR component, but let's be fair, it is not that interesting! In this task, we will introduce you to how to add a 3D component inside your ReactVR app!
 
 You might already notice that we have added a **death-star.obj** inside the **/static_assets** folder. Now we are going to use this .obj file and add it to our view. Psst. It is okay to remove the `<IntroText/>` and `<IntroBox/>` from the **index.vr.js** file 😉.
@@ -128,7 +156,7 @@ https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
 
 ❓ Add a `texture` prop inside your `<Model/>`, and define it as the url above. Remember, the texture prop always takes its argument as a string 😉. Ops! You should also set the `wireframe` equal to false. When the `wireframe` is true, it will overwrite the texture 😬.
 
-## Task 4 - Add animation to your 3D Model! 💥
+## Task 5 - Add animation to your 3D Model! 💥
 Now, lets add some animation to our 3D component 🤓! In this task, we will learn how to make the **death-star.obj** spin itself and play a sound whenever clicking on it!
 
 ❓ In file **introduction/intro3dModel.vr.js** import `Animated` and convert your Model to an `AnimatedModel` by defining it as described below inside your `render` function. Change the `Model` to `AnimatedModel`.
@@ -224,7 +252,7 @@ But as you may see, the spinning slows down at the end of the rotation. If you d
 
 Congratulations! You now have a 3D model that animates! 🎉🌟
 
-## Task 5 - Get to know the VrButton and sound effects! 😁
+## Task 6 - Get to know the VrButton and sound effects! 😁
 EyHey! We are soon finished with the introduction part! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app!
 
 ### Let's start with the VrButton.
@@ -251,6 +279,14 @@ Please see [documentation](https://facebook.github.io/react-vr/docs/vrbutton.htm
 onClick={() => this.onEnterDeathStar()}
 ```
 
+### Add Cursor! 🐭 👆
+
+You haven't forgotten about the Google Cardboard?! To make the interactions a little bit more mobile friendly, we should add a cursor that follows your movements and trigger whenever you touch the screen!
+
+❓ We have added `raycasters` and `cursorVisibility` inside the  **vr/client.js** file. Please remove the block comments from both of them.
+
+Great! 😄 Now you will see a white dot in the middle of your screen. This dot will represent your trigger point. If you like to click on something, you need to make sure that your white dot is hovering over it ✌🏼😜.
+
 ### Next step: Sound Effect!
 
 Now we are going to add a sound effect whenever we click on the death-star. Can you guess which prop we are going to use? 😝😏
@@ -267,14 +303,14 @@ In order to trigger the sound effect, we need to define the sound. In **static_a
 }
 ```
 
-## Task 6 - Let's make a VR game! 🎮 🎲 👾
+## Task 7 - Let's make a VR game! 🎮 🎲 👾
 Finally! You are done with the introduction part. Let's go ahead and start creating a ReactVR game!
 
 In this game, you will get the chance to walk in Luke Skywalker's footsteps and destroy the Death Star in order to restore peace to the galaxy 🙏 The problem is that the Galactic Empire will have built another Death Star as soon as you destroy the first one.. 😒🤷
 
 Your goal will be to destroy as many Death Stars as possible before the time runs out. May the force be with you! ✨
 
-Before we begin, import the **componenents/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file. 
+Before we begin, import the **componenents/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file.
 
 ### First step: Help build more Death Stars
 
@@ -333,32 +369,9 @@ Almost done! Notice that the animation does not reset when finished, so we need 
 
 ❓ Make the animation restart when finished, as well as regenerate a new set of Obstacles
 
-### Add Cursor! 🐭 👆
-
-To make it a little bit more mobile and CardBoard-friendly, we should add a cursor that follows your movements and triggered whenever you touch the screen!
-
-❓ We have added `raycasters` and `cursorVisibility` inside the  **vr/client.js** file. Please remove the block comments from both of them.
-
-Great! 😄 Now you will see a white dot in the middle of your screen. This dot will represent your trigger point. If you like to click on something, you need to make sure that your white dot is hovering over it ✌🏼😜.
-
 Our game is as good as done, but if you got any spare time be sure to try solve the extra tasks.
 
 ### Extra tasks:
   - Add start and stop game states to our game and with menus ✌🏼
   - Generate more random components over time ✌🏼
   - Extends or create your own ComponentGenerator to make the random components move in random directions ✌🏼
-
-## Task X - Test your project on your phone! 📱 💻
-In order to test this on our phone, we need to connect both our phone and computer on the same network! Please follow the steps below.
-
-- We need to get a hold of your IP address. The simplest way to this on a Mac is to press "alt" button and the wifi icon in the upper right corner. Then you will see something like this:
-
-![IP](https://preview.ibb.co/nxQXvx/Screen_Shot_2018_02_20_at_18_14_34.png)
-
-- If you don't have a Mac, another way to get ahold of your IP is to type `ifconfig` (or is it `ipconfig` 🤔) in your console application.
-
-- Open up the browser (preferably Chrome, Safari works fine too ✌🏼) on your phone and type in: `http://<Your.IP.Address>:8081/vr/`
-
-🎉🎉🎉🎉🎉  
-
-Try your Google Cardboard and explore the VR-world! 😄✌🏼
