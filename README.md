@@ -1,6 +1,6 @@
 # ReactVR 👀
 
-Welcome to this ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solution for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😜✌🏼!
+Welcome to our ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solution for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😜✌🏼!
 
 ## Getting Started
 
@@ -15,22 +15,22 @@ Another requirement for running this project is Git. Please follow the guide [he
 
 ### Init the project:
 - ✅ Direct yourself to the folder you want to include this project and then clone this project by typing `git clone <link to repo>` in your console application.
-- ✅ After cloning this project, remember to `cd` into the folder (Psst. `cd` stand for change directory and is the same as opening the folder in the finder app or directory on your mac/computer) and run `npm install` before you start this course 😉.
+- ✅ After cloning this project, remember to `cd` into the project folder and run `npm install` (Psst. `cd` stand for change directory and is the same as opening the folder in the finder app or directory on your mac/computer).
 
-👉 **Tips:** If you like to create your own ReactVR app, install ReactVR Cli by typing `npm install react-vr-cli -g` and then run `react-vr init [name of your reactVR project]` to create a new ReactVR project! 😄 We highly recommend you to clone this project when completing this course 😉 - just because we added some static assets to this project, that will not be included if you decide to create a new project from scratch!
+👉 **Tips:** It is possible to create a new clean ReactVR project template by using ReactVR Cli tool. First install the tool by typing `npm install react-vr-cli -g` and then create a project by running `react-vr init [name of your reactVR project]`. This is perfect for new projects, but for this course we have added our own static assets and boilerplate code, therefore you should clone our repository instead.
 
 ## Task 1 - Init your ReactVR project ☝️
-This task will explain how you initialize your ReactVR project. Open up the **reactVR_Course** folder and look at the **index.vr.js** file and take a brief look at it. This file is the entry point for this course.
+This task will explain how you initialize your ReactVR project. Open up the **reactVR_Course** folder and take a look at the **index.vr.js** file. This file is the entry point for this course.
 
-❓ But first, let's take a look at the file **/vr/client.js**. Above `...options,` add `enableHotReload: true,` and hit save. This will enable the hot reloader. That is, our application will automatically reload its view whenever we save a change in our code! 👍🏼
+❓ Before we start the application we should make a small change to the file **/vr/client.js**. Above the `...options,` line add `enableHotReload: true,` and hit save. This will enable the hot reloader. That is, our application will automatically reload its view whenever we save a change in our code! 👍🏼
 
 ➡️ Now go back to your console application and write `npm start`.
 
-Oops 😮! Remember to `cd` into the reactVR_course folder, if you have not done so yet! When the console is done building your ReactVR project go ahead and open http://localhost:8081/vr/. By the way, loading the page can take some time, especially the first time 🕑 😅...
+When the console is done building your ReactVR project you can open the application in a browser at http://localhost:8081/vr/. Be aware that it could take some time to load the page, especially on the first load 🕑 😅...
 
-Open up the **index.vr.js** file, there are two components inside the IteraGame React Component. View and Pano.
-- `<View>`: This component determinates the view, and you define whatever you want to include inside your view by putting it inside this component.
-- `<Pano>`: Pano is short for a panorama. In this component, you can select the background image. We have added some more pano images (jpg) for you in the **/static_assets** folder.
+Open up the **index.vr.js** file again, here you can see a View and Pano component inside our main IteraGame Component.
+- `<View>`: This component is a container for other components, you can put whatever you want to inside it and add styling to it. This component is similiar to a div in html.
+- `<Pano>`: Pano is short for a panorama. In this component you can set a 360&deg; background panorama image. We have added some more different pano images (jpg) for you to use in the **/static_assets** folder.
 
 ❓ Go ahead and try to change the pano image to something else! **Hint** : Look into **/static_assets** folder 😉.
 
@@ -65,33 +65,31 @@ Put your phone in your Google Cardboard and explore the VR-world 😄✌🏼 Be 
 ## Task 3 - Get to know react-vr!
 Before we go ahead and start creating the game, we should get a little bit familiar with the react-vr library. In this task, we will explain how to add different ReactVR components to your view!
 
-❓ Start by importing **IntroText** from **introduction/IntroText.vr.js** into your **index.vr.js** file and include this in your view.
+❓ Start by importing the **IntroText** component from **components/introduction/IntroText.vr.js** into your **index.vr.js** file and add it in your view.
 
-This file includes one of the simplest components in the react-vr library. The `<Text>` component will simply add a text inside and view.
+The IntroText file contains one of the simplest components in the react-vr library, the `<Text>` component. This component simply adds a specified text with some styling at the set location.
 
 ❓ Try to change the text from 'Velkommen til ReactVR kurs! ' to something else.
 
-There are many other components supported by the react-vr package. For example: `<Box/>`, `<Plane/>`, `<Cylinder>` and even `<Image/>` and `<Video/>`! We have added a file named **IntroBox.vr.js** inside the **introduction** folder.
+There are many other components supported by the react-vr package. For example: `<Box/>`, `<Plane/>`, `<Cylinder>` and even `<Image/>` and `<Video/>`! We have added a file named **IntroBox.vr.js** inside the **components/introduction** folder that contains a `<Box/>` component.
 
-❓ Import the **IntroBox** to your **index.vr.js** file, as you did with **IntroText**.
+❓ Import the **IntroBox** to your **index.vr.js** file, as you did with **IntroText**, and add in the view.
 
-Do you see the box? 😜
+Do you see the box? No? 😱 
 
-No! 😱 And there is a simple explanation for this! Take a look at the **introduction/IntroBox.vr.js** file. Do you see what is missing? 🤔 You cannot see the `<Box/>` component inside your view yet because you haven't included the styling yet! Make sense? 😜
+There is a simple explanation for this! Take a look at the **components/introduction/IntroBox.vr.js** file. Do you see what is missing? 🤔 You cannot see the `<Box/>` component inside your view yet because you haven't set the size and styling yet! Makes sense? 😜
 
-Since a `<Box/>` is not exactly the same as a `<Text/>` component, the props will, therefore, be a little different from the Text pros.
-
-Okay, so the next step is to tell your view how big you want your `<Box/>` component.
+Okay, so the next step is to tell your view the size your `<Box/>` component. Note that the allowed props differ a little bit from those on the Text component.
 
 ❓ Add these four props to your `<Box/>` component and set a value:
-- `dimWidth`
-- `dimHeight`
-- `dimDepth`
+- `dimWidth={value}`
+- `dimHeight={value}`
+- `dimDepth={value}`
 - `wireframe = {true} `
 
-These three first values determinate the width, height, and depth of the `<Box/>` component. Set each of the values to be equal to something between 0 and 1 because we don't want the box to be too big 😉. In ReactVR the dimension is measured in meters, therefore it is often seen values between 0 and 1 in ReactVR projects. `wireframe = {true} ` is just to see the outline of the box, and has the only purpose of helping us see the dimension of the `<Box/>` component.
+The three first props determinate the width, height, and depth of the `<Box/>` component. Set each of the values to be equal to something between 0 and 1 because we don't want the box to be too big 😉. In ReactVR the dimension is measured in meters, therefore we often see size values between 0 and 1. `wireframe = {true} ` is just to see the outline of the box, and has the only purpose of helping us see the dimension of the `<Box/>` component.
 
-Did you check the page? 😨???
+Did you check the page? 😨??? Still no box?
 
 We have not told the view **where** to place to `<Box/>` component yet 😜. Let us introduce you to the ReactVR coordinates:
 
@@ -123,15 +121,15 @@ And also, if you like to rotate your component, you can use `rotateY`, `rotateX`
 ![Box with rotation](https://preview.ibb.co/k71AXc/Screen_Shot_2018_02_24_at_21_01_18.png)
 
 ## Task 4 - Add a 3D model! 🤓 🌎
-Okay, great! Now you know how to add a ReactVR component, but let's be fair, it is not that interesting! In this task, we will introduce you to how to add a 3D component inside your ReactVR app!
+Okay, great! Now you know how to add basic ReactVR components, but let's be fair, it is not that interesting! In this task, we will introduce you to how to add a 3D object component inside your ReactVR app!
 
 You might already notice that we have added a **death-star.obj** inside the **/static_assets** folder. Now we are going to use this .obj file and add it to our view. Psst. It is okay to remove the `<IntroText/>` and `<IntroBox/>` from the **index.vr.js** file 😉.
 
-👉 **Tips:** We recommend you to select the `space.jpg` file as pano for this task 🌝. Because it looks cool! 🤓 🌎
+👉 **Tips:** We recommend that you select the `space.jpg` file as pano for this task 🌝. Why? Because it looks cool! 🤓 🌎
 
-❓ Guess what! We need to import the  `<Intro3DModel/> ` component to our **index.vr.js** file. Go ahead and do it! 👊
+❓ Guess what! We need to import the  `<Intro3DModel/> ` component to our **index.vr.js** file and add it in the View. Go ahead and do it! 👊
 
-❓ Go to the **introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<div/>` to `<Model/>`.
+❓ Go to the **components/introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<div/>` to `<Model/>`.
 
 ❓ Then we need to tell the `<Model/>` component to use the **death-star.obj** as its source. Add a `source` prop inside your `<Model/>` component and define the obj file.
 
@@ -141,7 +139,7 @@ source={{
     }}
 ```
 
-❓ In addition, add the transform styling, as you did for the `<Box/` component in the previous task. If you don't do this, the ReactVR will use it's default coordinates. Do you remember what it was? 😜
+❓ In addition, add the transform styling, as you did for the `<Box/>` component in the previous task. If you don't do this, the ReactVR will use it's default coordinates. Do you remember what it was? 😜
 
 ❓ Include the prop `wireframe` and set its value to `true` inside your `<Model/>` component.
 
@@ -159,7 +157,7 @@ https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png
 ## Task 5 - Add animation to your 3D Model! 💥
 Now, lets add some animation to our 3D component 🤓! In this task, we will learn how to make the **death-star.obj** spin itself and play a sound whenever clicking on it!
 
-❓ In file **introduction/intro3dModel.vr.js** import `Animated` and convert your Model to an `AnimatedModel` by defining it as described below inside your `render` function. Change the `Model` to `AnimatedModel`.
+❓ In file **components/introduction/intro3dModel.vr.js** import `Animated` and convert your Model to an `AnimatedModel` by defining it as described below inside your `render` function. Change the `Model` to `AnimatedModel`.
 
 `
 const AnimatedModel = Animated.createAnimatedComponent(Model);
@@ -259,7 +257,7 @@ EyHey! We are soon finished with the introduction part! 👏 The last two things
 
 ➡️️️ VrButton is a helper for managing interaction and has no appearance by default. It only acts as a wrapper and can wrap other components.
 
-❓ In **introduction/Intro3DModel** import `VrButton` and wrap the `<AnimatedModel/>` component.
+❓ In **components/introduction/Intro3DModel** import `VrButton` and wrap the `<AnimatedModel/>` component.
 
 VrButton has many different types of props, some of them are:
 
@@ -310,7 +308,7 @@ In this game, you will get the chance to walk in Luke Skywalker's footsteps and 
 
 Your goal will be to destroy as many Death Stars as possible before the time runs out. May the force be with you! ✨
 
-Before we begin, import the **componenents/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file.
+Before we begin, import the **components/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file.
 
 ### First step: Help build more Death Stars
 
