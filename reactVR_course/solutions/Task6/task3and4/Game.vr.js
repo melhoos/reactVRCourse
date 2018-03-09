@@ -1,9 +1,9 @@
 import React from 'react'
 import {Animated, View, NativeModules} from 'react-vr'
 
-import Intro3DModel from './Intro3DModel.vr.js';
+import Intro3DModel from '../introduction/Intro3DModel.vr.js';
 
-import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../../helpers/ComponentGenerator';
+import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGenerator';
 
 const NUM_COMPONENTS = 10;
 const Y_POSITION = 8;

@@ -14,6 +14,7 @@ function init(bundle, parent, options) {
   // Add polyfill to allow for VR on iOS devices
   const polyfill = new WebVRPolyFill();
 
+  // TODO: Uncomment the three lines below to enable the Native Module
   const domOverlayContainer = document.createElement('div');
   domOverlayContainer.id = 'dom-overlay';
   const domOverlayModule = new DomOverlayModule(domOverlayContainer);
@@ -29,11 +30,11 @@ function init(bundle, parent, options) {
     cursorVisibility: 'visible',
     enableHotReload: true,
     ...options,
-    // Register dom overlay module upon initialization.
+    // TODO: Uncomment the line below to enable the Native Module
     nativeModules: [domOverlayModule],
   });
 
-  // Inject DOM overlay container to the player so that it is rendered properly.
+  // TODO: Uncomment the line below to enable the Native Module
   vr.player._wrapper.appendChild(domOverlayContainer);
 
   vr.render = function() {
