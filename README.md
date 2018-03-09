@@ -133,10 +133,10 @@ You might already notice that we have added a **death-star.obj** inside the **/s
 
 ❓ Then we need to tell the `<Model/>` component to use the **death-star.obj** as its source. Add a `source` prop inside your `<Model/>` component and define the obj file.
 
-```
-source={{
-        obj: asset('objFileNameHere'),
-    }}
+```javascript
+source = {{
+  obj: asset('objFileNameHere'),
+}}
 ```
 
 ❓ In addition, add the transform styling, as you did for the `<Box/>` component in the previous task. If you don't do this, the ReactVR will use it's default coordinates. Do you remember what it was? 😜
@@ -165,7 +165,7 @@ const AnimatedModel = Animated.createAnimatedComponent(Model);
 
 ❓ In order to make the **death-star.obj** spin we need to define its local state when first load the app. This state should be an Animated.Value. Lets define the components state:
 
-```
+```javascript
 export default class Intro3DModel extends React.Component {
   constructor() {
     super();
@@ -185,7 +185,7 @@ Nope 👻! We need to do a little more coding before it actually spins! We need 
 
 ❓ Define the `componentDidMount()` function inside your React component. Use the `Animated.timing` in order to specify the rotation value from 0 to 1 in 5 seconds. Ops. Remember that the duration is measured in ms 😇.
 
-```
+```javascript
   componentDidMount() {
     Animated.timing(
       this.state.spin,
@@ -211,7 +211,7 @@ Luckily we can achieve this using _interpolate_ 🤗.
 
 ❓ The `interpolate()` function takes one argument. This argument should be an object that looks like this:
 
-```
+```javascript
 {
     inputRange: [0, 1],
     outputRange: ['0deg', '360deg']
@@ -232,7 +232,7 @@ But the **death-star.obj** only spins one time 🤔. We want to make it loop! �
 
 ❓ In order for us to repeat the function, we must call the `this.spinAnimation()` repeatedly. Add the following code inside your `spinAnimation()`.
 
-```
+```javascript
 ).start( () => this.spinAnimation());
 ```
 
@@ -273,8 +273,8 @@ Please see [documentation](https://facebook.github.io/react-vr/docs/vrbutton.htm
 
 ❓ Bind the function you just created to the `onClick` prop!
 
-```
-onClick={() => this.onEnterDeathStar()}
+```javascript
+onClick={() => this.onClickDeathStar()}
 ```
 
 ### Add Cursor! 🐭 👆
@@ -308,15 +308,31 @@ In this game, you will get the chance to walk in Luke Skywalker's footsteps and 
 
 Your goal will be to destroy as many Death Stars as possible before the time runs out. May the force be with you! ✨
 
+<<<<<<< HEAD
 Before we begin, import the **components/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file.
+||||||| merged common ancestors
+Before we begin, import the **componenents/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file.
+=======
+### Before we begin
+>>>>>>> Make README for game exercise more clear
 
-### First step: Help build more Death Stars
+First, we need to set up a few things. We have created a `Game` component for you where we will do most of our coding.
+
+❓ Replace the `Intro3DModel` with the `Game` component in **index.vr.js**.
+
+Take a look inside of **componenents/game/Game.vr.js**. There's not much there except an empty constructor and a render function that returns a `View` with the Death Star inside of it.
+
+❓ Please make sure that the `Pano` component in **index.vr.js** is set to show `space.jpg` for maximum Star Wars effect.
+
+Ready for takeoff?! 🚀👩‍🚀
+
+### Build more Death Stars
 
 We want new Death Stars to appear whenever an old one is destroyed. But!! If they were to appear in the same place every time, the game would be too easy 😅. Therefore, we want each new Death Star to appear at a random location in space.
 
 ❓ Import the `getRandomCoordinates` function from `ComponentGenerator` in the helpers folder. We won't worry too much about how the coordinates are generated, but feel free to check out the function yourself to see how its done.
 
-Currently, we only update the x-coordinate whenever the Death Star is hit. We want to update the position in all three directions, and therefore we need to store the x-, y- and z-coordinates in the state.
+In the previous task, we only updated the x-coordinate whenever the Death Star was hit. We want to update the position in all three directions, and therefore we need to store the x-, y- and z-coordinates in the state.
 
 ❓ Alter the state of the `Intro3DModel` component so that it stores all three coordinates in an array instead of only the x-coordinate. You can set its initial state to [0, 0, -3] for an easy start to the game 😉.
 
@@ -326,32 +342,54 @@ What should we now do with the coordinates in the `onClickDeathStar` method? Rem
 
 Try to click the first Death Star that appears in front of you when starting your application. Nice job, you destroyed it! 😎🎇 But, wait?! It's not over yet. Move the screen around to find another Death Star at a different location! 😰
 
-### Add score board
+### Add a score board
 
-We want to be able to view how much time we got left and our score in the game. For that we are going to add a sticky panel which follows our movements in the 3D world. This is done by adding a Native React Module that lives in the 2D world. All native modules are registered in the `nativeModules` field within **vr/client.js**, which holds all Native Modules we want to register.
+To make it a proper game, we need a score and a countdown 🏆⏰ We also need somewhere to show the value of these. For that we are going to add a sticky panel in 2D, that follows our movements in the 3D world 👀. ReactVR doesn't support this feature, but luckily, we can build it ourself and incorporate it in our VR application by turning it into a *Native Module*. All native modules are registered in the `nativeModules` field within **vr/client.js**.
 
-❓ We have already made a native module helper for you called `StickyPanel`, so all we need to do is enable it! 😉 Please remove the comments inside **vr/client.js** to register our Native Module
+❓ We have already made the native module for you, called `StickyPanel`, so all we need to do is enable it! 😉 Please find the three "TODO's" inside **vr/client.js** and uncomment the specified lines to register the native module.
 
-❓ Initialize the `StickyPanel` within the render method within **index.vr.js** file by adding the line `NativeModules.DomOverlayModule.openOverlay({time: 30, score: 0})`
+❓ Initialize the `StickyPanel` within the render method of the `Game` component by adding the following line:
+ ```javascript
+ NativeModules.DomOverlayModule.openOverlay({time: 30, score: 0})
+ ```
+The time parameter says how many seconds you have to destroy Death Stars, while the score parameter sets the score to 0 for now.
 
-You should now see a score board! ✌🏼
+Check your application, you should now see a score board! ✌🏼🏅
 
-### Add game score
+⚠️ **Warning:** Is your score board not showing properly on your phone? You can refine the position of the board by changing its styling in the **static_assets/style.css** file. Try to change the values of `top` and `left` inside of the `container` selector until you find something that fits your screen. Note that since this is a 2D module, it will only show on one part of your screen.
 
-We have a sticky score board, great! However, it doesn't update when we destroy death stars. It's time to add some the state to our game. First, we need add an on click handler to update our `score` every time we destroy a death star.
+### Update the score
 
-❓ Add an `onClick` method to the `Intro3DModel` component and call it every time a death star is clicked. Also, create a method in **components/game/Game.vr.js** which increments the global game score
+We have a score board, great!! 😄 But it's not much fun when it only displays a score of 0.. Now it's time to add some state to our game! We will keep track of the game state inside of the `Game` component.
 
-❓ Pass the method as props into the `Intro3DModel` component and be sure to our score into the game panel
+❓ In the `Game` constructor, add state containing the score, and set the initial score to zero.
 
-Superb! Now our score updates every time we destroy a death star
+Now, we need to update the state every time a Death Star is hit.
+
+❓ Add an `onClick` method to the `Game` component. Bind this function to the `onClick` prop of the  `Intro3DModel` component, just like you did in task 6! The method should update the score by 1.
+
+We want both the `onClickDeathStar` method in `Intro3DModel` and the `onClick` method in `Game` to be called.
+
+❓ At the end of the `onClickDeathStar` method, call the `onClick` method sent by its parent via props:
+
+```javascript
+this.props.onClick();
+```
+
+Try to destroy a Death Star and check if you finally get some points for your effort!! 🎯👍
 
 ### Add obstacles
 
 To make the game a little more difficult, we are going to add obstacles which appear at random positions and flies through space along a single axis. The obstacles are going to be malicious objects, which steals points from us when clicked on. To save you some time, we have already created a `ComponentGenerator` component inside **helpers/ComponentGenerator**. For now, the generator assumes that we are only moving the objects in the Y direction. The generator can be used in the following way:
 
 ```javascript
-<ComponentGenerator yPosition={4} numberOfComponents={10} onClick={() => {console.log("Woops, don't shoot me!")}}/>
+<ComponentGenerator
+  yPosition={4}
+  numberOfComponents={10}
+  onClick={() => {
+    console.log("Woops, don't shoot me!")
+  }}
+/>
 ```
 ❓ Add the above snippet inside the render method of **Game.vr.js** to take a look at the how the Obstacles are created
 
