@@ -17,7 +17,7 @@ Another requirement for running this project is Git. Please follow the guide [he
 - ✅ Direct yourself to the folder you want to include this project and then clone this project by typing `git clone <link to repo>` in your console application.
 - ✅ After cloning this project, remember to `cd` into the project folder and run `npm install` (Psst. `cd` stand for change directory and is the same as opening the folder in the finder app or directory on your mac/computer).
 
-👉 **Tips:** It is possible to create a new clean ReactVR project template by using ReactVR Cli tool. First install the tool by typing `npm install react-vr-cli -g` and then create a project by running `react-vr init [name of your reactVR project]`. This is perfect for new projects, but for this course we have added our own static assets and boilerplate code, therefore you should clone our repository instead.
+👉 **Tip if you later want to create your own application:** It is possible to create a new clean ReactVR project template by using ReactVR Cli tool. First install the tool by typing `npm install react-vr-cli -g` and then create a project by running `react-vr init [name of your reactVR project]`. This is perfect for new projects, but for this course we have added our own static assets and boilerplate code, therefore you should clone our repository instead.
 
 ## Task 1 - Init your ReactVR project ☝️
 This task will explain how you initialize your ReactVR project. Open up the **reactVR_Course** folder and take a look at the **index.vr.js** file. This file is the entry point for this course.
