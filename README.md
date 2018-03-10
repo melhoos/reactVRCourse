@@ -75,7 +75,7 @@ There are many other components supported by the react-vr package. For example: 
 
 ❓ Import the **IntroBox** to your **index.vr.js** file, as you did with **IntroText**, and add in the view.
 
-Do you see the box? No? 😱 
+Do you see the box? No? 😱
 
 There is a simple explanation for this! Take a look at the **components/introduction/IntroBox.vr.js** file. Do you see what is missing? 🤔 You cannot see the `<Box/>` component inside your view yet because you haven't set the size and styling yet! Makes sense? 😜
 
@@ -308,13 +308,7 @@ In this game, you will get the chance to walk in Luke Skywalker's footsteps and 
 
 Your goal will be to destroy as many Death Stars as possible before the time runs out. May the force be with you! ✨
 
-<<<<<<< HEAD
-Before we begin, import the **components/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file.
-||||||| merged common ancestors
-Before we begin, import the **componenents/game/Game.vr.js** file in **index.vr.js**, render it, and set the Pano to show `space.jpg`. We are going to do most of our game inside the **components/game/Game.vr.js** file.
-=======
 ### Before we begin
->>>>>>> Make README for game exercise more clear
 
 First, we need to set up a few things. We have created a `Game` component for you where we will do most of our coding.
 

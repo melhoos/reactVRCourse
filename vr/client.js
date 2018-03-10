@@ -14,7 +14,7 @@ function init(bundle, parent, options) {
   // Add polyfill to allow for VR on iOS devices
   const polyfill = new WebVRPolyFill();
 
-  // TODO: Comment in to enable Native Module
+  // TODO: Uncomment the three lines below to enable the Native Module
   // const domOverlayContainer = document.createElement('div');
   // domOverlayContainer.id = 'dom-overlay';
   // const domOverlayModule = new DomOverlayModule(domOverlayContainer);
@@ -30,12 +30,12 @@ function init(bundle, parent, options) {
     cursorVisibility: 'visible', */
     //enableHotReload: true,
     ...options,
-    // TODO: Comment in to enable Native Module
-    //nativeModules: [domOverlayModule],
+    // TODO: Uncomment the line below to enable the Native Module
+    // nativeModules: [domOverlayModule],
   });
 
-  // TODO: Comment in to enable Native Module
-  //vr.player._wrapper.appendChild(domOverlayContainer);
+  // TODO: Uncomment the line below to enable the Native Module
+  // vr.player._wrapper.appendChild(domOverlayContainer);
 
   vr.render = function() {
     // Any custom behavior you want to perform on each frame goes here

@@ -38,8 +38,8 @@ class StickyHeader extends React.Component {
     return (
       <div className="container">
         <div className="content">
-          <div className="score">Poeng: {score}</div>
-          <div className="time">Tid: {time} s</div>
+          <div className="score">{score}</div>
+          <div className="time">{time} s</div>
         </div>
       </div>
     );
