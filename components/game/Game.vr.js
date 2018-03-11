@@ -1,11 +1,11 @@
 import React from 'react'
 import {Animated, View, NativeModules} from 'react-vr'
 
-import Intro3DModel as DeathStar from '../introduction/Intro3DModel.vr.js';
+import Intro3DModel from '../introduction/Intro3DModel.vr.js';
 
 import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGenerator';
 
-export default class ShapeGenerator extends React.Component {
+export default class Game extends React.Component {
   constructor() {
     super();
   }
@@ -13,7 +13,7 @@ export default class ShapeGenerator extends React.Component {
   render() {
       return (
         <View>
-          <DeathStar/>
+          <Intro3DModel/>
         </View>
       );
   }
