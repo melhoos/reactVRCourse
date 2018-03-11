@@ -5,7 +5,7 @@ import Intro3DModel from '../introduction/Intro3DModel.vr.js';
 
 import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGenerator';
 
-export default class ShapeGenerator extends React.Component {
+export default class Game extends React.Component {
   constructor() {
     super();
   }
