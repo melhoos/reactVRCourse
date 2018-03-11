@@ -324,7 +324,7 @@ Ready for takeoff?! 🚀👩‍🚀
 
 We want new Death Stars to appear whenever an old one is destroyed. But!! If they were to appear in the same place every time, the game would be too easy 😅. Therefore, we want each new Death Star to appear at a random location in space.
 
-❓ Import the `getRandomCoordinates` function from `ComponentGenerator` in the helpers folder. We won't worry too much about how the coordinates are generated, but feel free to check out the function yourself to see how its done.
+❓ In the `Intro3DModel`, import the `getRandomCoordinates` function from `ComponentGenerator` in the helpers folder. We won't worry too much about how the coordinates are generated, but feel free to check out the function yourself to see how its done.
 
 In the previous task, we only updated the x-coordinate whenever the Death Star was hit. We want to update the position in all three directions, and therefore we need to store the x-, y- and z-coordinates in the state.
 
@@ -332,23 +332,21 @@ In the previous task, we only updated the x-coordinate whenever the Death Star w
 
 What should we now do with the coordinates in the `onClickDeathStar` method? Remember that we want the new Death Star to appear at a random location when we destroy the old one.
 
-❓ Use the imported `getRandomCoordinates` function to set the location of the new Death Star. We don't want the Death Star to appear too close or too far away, so set the minimum and maximum value to, for instance, -5 and 5 respectively.
+❓ Use the imported `getRandomCoordinates` function to set the location of the new Death Star. We don't want the Death Star to appear too far away, so set the minimum and maximum value to, for instance, -5 and 5 respectively.
 
 Try to click the first Death Star that appears in front of you when starting your application. Nice job, you destroyed it! 😎🎇 But, wait?! It's not over yet. Move the screen around to find another Death Star at a different location! 😰
 
 ### Add a score board
 
-To make it a proper game, we need a score and a countdown 🏆⏰ We also need somewhere to show the value of these. For that we are going to add a sticky panel in 2D, that follows our movements in the 3D world 👀. ReactVR doesn't support this feature, but luckily, we can build it ourself and incorporate it in our VR application by turning it into a *Native Module*. All native modules are registered in the `nativeModules` field within **vr/client.js**.
+To make it a proper game, we need to show off how many Death Stars we have destroyed 🏆 For that we are going to add a sticky panel in 2D, that follows our movements in the 3D world 👀. ReactVR doesn't support this feature, but luckily, we can build it ourself and incorporate it in our VR application by turning it into a *Native Module*. All native modules are registered in the `nativeModules` field within **vr/client.js**.
 
 ❓ We have already made the native module for you, called `StickyPanel`, so all we need to do is enable it! 😉 Please find the three "TODO's" inside **vr/client.js** and uncomment the specified lines to register the native module.
 
 ❓ Initialize the `StickyPanel` within the render method of the `Game` component by adding the following line:
  ```javascript
- NativeModules.DomOverlayModule.openOverlay({time: 30, score: 0})
+ NativeModules.DomOverlayModule.openOverlay({score: 0})
  ```
-The time parameter says how many seconds you have to destroy Death Stars, while the score parameter sets the score to 0 for now.
-
-Check your application, you should now see a score board! ✌🏼🏅
+We will set the score parameter to 0 for now. Check your application, you should now see a score board! ✌🏼🏅
 
 ⚠️ **Warning:** Is your score board not showing properly on your phone? You can refine the position of the board by changing its styling in the **static_assets/style.css** file. Try to change the values of `top` and `left` inside of the `container` selector until you find something that fits your screen. Note that since this is a 2D module, it will only show on one part of your screen.
 

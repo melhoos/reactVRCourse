@@ -7,7 +7,6 @@ import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../
 
 const NUM_COMPONENTS = 10;
 const Y_POSITION = 8;
-const GAME_TIME = 30;
 
 export default class Game extends React.Component {
   constructor() {
@@ -20,7 +19,6 @@ export default class Game extends React.Component {
     const yPosition = new Animated.Value(Y_POSITION);
     this.state = {
       globalYPosition: yPosition,
-      time: GAME_TIME,
       Obstacles: () => <ComponentGenerator yPosition={yPosition} numberOfComponents={NUM_COMPONENTS} onClick={this.onShootShape(-1)}/>,
       score: 0
     }
@@ -58,8 +56,8 @@ export default class Game extends React.Component {
   }
 
   render() {
-    const {Obstacles, deathStarPosition, score, globalYPosition, time} = this.state;
-    NativeModules.DomOverlayModule.openOverlay({time: time, score: score});
+    const {Obstacles, deathStarPosition, score, globalYPosition} = this.state;
+    NativeModules.DomOverlayModule.openOverlay({score: score});
       return (
         <View>
           <Obstacles/>
