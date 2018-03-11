@@ -358,7 +358,7 @@ We have a score board, great!! 😄 But it's not much fun when it only displays 
 
 Now, we need to update the state every time a Death Star is hit.
 
-❓ Add an `onClick` method to the `Game` component. Bind this function to the `onClick` prop of the  `Intro3DModel` component, just like you did in task 6! The method should update the score by 1.
+❓ Add an `onClick` method to the `Game` component that updates the score by 1. Bind this function to the `onClick` prop of the `Intro3DModel` component, just like you did in task 6!
 
 We want both the `onClickDeathStar` method in `Intro3DModel` and the `onClick` method in `Game` to be called.
 
