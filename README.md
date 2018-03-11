@@ -251,7 +251,7 @@ But as you may see, the spinning slows down at the end of the rotation. If you d
 Congratulations! You now have a 3D model that animates! 🎉🌟
 
 ## Task 6 - Get to know the VrButton and sound effects! 😁
-EyHey! We are soon finished with the introduction part! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app!
+EyHey! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app!
 
 ### Let's start with the VrButton.
 
@@ -302,7 +302,7 @@ In order to trigger the sound effect, we need to define the sound. In **static_a
 ```
 
 ## Task 7 - Let's make a VR game! 🎮 🎲 👾
-Finally! You are done with the introduction part. Let's go ahead and start creating a ReactVR game!
+Finally! Let's go ahead and start creating a ReactVR game!
 
 In this game, you will get the chance to walk in Luke Skywalker's footsteps and destroy the Death Star in order to restore peace to the galaxy 🙏 The problem is that the Galactic Empire will have built another Death Star as soon as you destroy the first one.. 😒🤷
 
