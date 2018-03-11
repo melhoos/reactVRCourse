@@ -1,6 +1,6 @@
 # ReactVR 👀
 
-Welcome to our ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solution for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😜✌🏼!
+Welcome to our ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. 
 
 ## Getting Started
 
