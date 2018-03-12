@@ -129,7 +129,7 @@ You might already notice that we have added a **death-star.obj** inside the **/s
 
 ❓ Guess what! We need to import the  `<Intro3DModel/> ` component to our **index.vr.js** file and add it in the View. Go ahead and do it! 👊
 
-❓ Go to the **components/introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<div/>` to `<Model/>`.
+❓ Go to the **components/introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<View/>` to `<Model/>`.
 
 ❓ Then we need to tell the `<Model/>` component to use the **death-star.obj** as its source. Add a `source` prop inside your `<Model/>` component and define the obj file.
 
