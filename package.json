@@ -17,11 +17,13 @@
     "react-vr": "~2.0.0",
     "react-vr-web": "~2.0.0",
     "three": "^0.87.0",
-    "webvr-polyfill": "immersive-web/webvr-polyfill#a942181d743f382bd7d5f1dba24db232b2ba18ec"
+    "webvr-polyfill": "immersive-web/webvr-polyfill#a942181d743f382bd7d5f1dba24db232b2ba18ec",
+    "react-native-animated-math": "0.1.0"
   },
   "devDependencies": {
     "babel-jest": "^19.0.0",
     "babel-preset-react-native": "^1.9.1",
+    "babel-preset-env": "1.6.1",
     "jest": "^19.0.2",
     "react-devtools": "^2.5.2",
     "react-test-renderer": "16.0.0",

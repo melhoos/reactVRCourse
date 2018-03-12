@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppRegistry, asset, Pano, View, Text} from 'react-vr';
+import {AppRegistry, asset, Pano, View} from 'react-vr';
 
 import Game from './components/game/Game.vr';
 

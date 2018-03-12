@@ -10,6 +10,7 @@ import { getRandomCoordinates }  from '../../helpers/ComponentGenerator';
 
 import {Easing} from 'react-native';
 
+
 export default class Intro3DModel extends React.Component {
   constructor() {
     super();
@@ -53,6 +54,7 @@ export default class Intro3DModel extends React.Component {
       }
     )
     return (
+<<<<<<< HEAD
       <VrButton onClick={() => this.onClickDeathStar()} onClickSound={{mp3: asset('Laser_Blasts.mp3')}}>
       <AnimatedModel
       source = {{
@@ -68,6 +70,9 @@ export default class Intro3DModel extends React.Component {
       texture={"https://s3-us-west-2.amazonaws.com/s.cdpn.io/827672/death-star.png"}
       />
       </VrButton>
+=======
+      <View/>
+>>>>>>> 1280eb018ec72754533f61a2a59fddf3d578c847
     );
   }
 };

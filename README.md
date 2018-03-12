@@ -1,6 +1,6 @@
 # ReactVR 👀
 
-Welcome to our ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solution for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😜✌🏼!
+Welcome to our ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. 
 
 ## Getting Started
 
@@ -98,7 +98,7 @@ ReactVR default coordinates are [0,0,0], i.e. [x,y,z] coordinates.
 - Y coordinate: a positive value brings the component up, and a negative value brings the component down.
 - Z coordinate: a positive value brings the component behind you and a negative value brings the component in front of you **(❗️❗️)**.
 
-In order to tell the component, it's position, you need to add a styling prop, and use the `transform` inside it. Something like this:
+In order to tell the component its position, you need to add a styling prop, and use the `transform` inside it. Something like this:
 
 ```
 style={{
@@ -129,7 +129,7 @@ You might already notice that we have added a **death-star.obj** inside the **/s
 
 ❓ Guess what! We need to import the  `<Intro3DModel/> ` component to our **index.vr.js** file and add it in the View. Go ahead and do it! 👊
 
-❓ Go to the **components/introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<div/>` to `<Model/>`.
+❓ Go to the **components/introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<View/>` to `<Model/>`.
 
 ❓ Then we need to tell the `<Model/>` component to use the **death-star.obj** as its source. Add a `source` prop inside your `<Model/>` component and define the obj file.
 
@@ -220,7 +220,7 @@ Luckily we can achieve this using _interpolate_ 🤗.
 
 It spins! 🎉🎈😄
 
-❓ Let's clean up our code a little bit and move the right side of the `rotateY:` into a separate constant inside our render function and call it for `spinYValue`. So the `rotateY` should look something like this:
+❓ Let's clean up our code a little bit and move the right side of the `rotateY:` into a separate constant inside our render function and call it `spinYValue`. So the `rotateY` should look something like this:
 
 ```
     {rotateY: spinYValue}
@@ -228,7 +228,7 @@ It spins! 🎉🎈😄
 
 But the **death-star.obj** only spins one time 🤔. We want to make it loop! 😁
 
-❓ Move everything that is inside the `componentDidMount()` function into a separate function. Name the function for `spinAnimation()` and call it from the `componentDidMount()` function. Remember to write `this` in front the functio-name in order to call it!
+❓ Move everything that is inside the `componentDidMount()` function into a separate function. Name the function for `spinAnimation()` and call it from the `componentDidMount()` function. Remember to write `this` in front of  the function name in order to call it!
 
 ❓ In order for us to repeat the function, we must call the `this.spinAnimation()` repeatedly. Add the following code inside your `spinAnimation()`.
 
@@ -240,7 +240,7 @@ Still not spinning more than one time? 😧
 
 The explanation to this is that the `this.state.spin` value is already equal to 1 when we redo the `spinAnimation()` function. Therefore we need to set the `this.state.spin` value back to value 0.
 
-❓ Set `this.state.spin` value to 0 in the beginning of the `spinAimation()` function.
+❓ Set `this.state.spin` value to 0 in the beginning of the `spinAnimation()` function.
 
 Hurray! It is spinning! 😃 👏
 
@@ -251,7 +251,7 @@ But as you may see, the spinning slows down at the end of the rotation. If you d
 Congratulations! You now have a 3D model that animates! 🎉🌟
 
 ## Task 6 - Get to know the VrButton and sound effects! 😁
-EyHey! We are soon finished with the introduction part! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app!
+EyHey! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app!
 
 ### Let's start with the VrButton.
 
@@ -302,11 +302,11 @@ In order to trigger the sound effect, we need to define the sound. In **static_a
 ```
 
 ## Task 7 - Let's make a VR game! 🎮 🎲 👾
-Finally! You are done with the introduction part. Let's go ahead and start creating a ReactVR game!
+Finally! Let's go ahead and start creating a ReactVR game!
 
 In this game, you will get the chance to walk in Luke Skywalker's footsteps and destroy the Death Star in order to restore peace to the galaxy 🙏 The problem is that the Galactic Empire will have built another Death Star as soon as you destroy the first one.. 😒🤷
 
-Your goal will be to destroy as many Death Stars as possible before the time runs out. May the force be with you! ✨
+Your goal will be to destroy as many Death Stars as possible. May the force be with you! ✨
 
 ### Before we begin
 
@@ -370,36 +370,35 @@ this.props.onClick();
 
 Try to destroy a Death Star and check if you finally get some points for your effort!! 🎯👍
 
-### Add obstacles
+### Add some Obstacles
 
-To make the game a little more difficult, we are going to add obstacles which appear at random positions and flies through space along a single axis. The obstacles are going to be malicious objects, which steals points from us when clicked on. To save you some time, we have already created a `ComponentGenerator` component inside **helpers/ComponentGenerator**. For now, the generator assumes that we are only moving the objects in the Y direction. The generator can be used in the following way:
+Don't you feel a bit lonely trying to win the Galactic Empire over all by yourself? 😰 Luckily, help is on the way! In the final part of the exercise, you will meet some friendly spaceships that have come to celebrate your victory against the dark side. 🎉
 
-```javascript
-<ComponentGenerator
-  yPosition={4}
-  numberOfComponents={10}
-  onClick={() => {
-    console.log("Woops, don't shoot me!")
-  }}
-/>
-```
-❓ Add the above snippet inside the render method of **Game.vr.js** to take a look at the how the Obstacles are created
+❓ Inside of `Game`, render the `ComponentGenerator` component, which takes the prop `numberOfComponents`. This says how many spaceships you want to appear. A good number is 20, but if your laptop/phone is a bit on the slower side, you might want to reduce this number.
 
-❓ In the constructor of **Game.vr.js**, add `Obstacles: () => <ComponentGenerator numberOfComponents={10} .../>`
+Do you recognize the spaceships? 😄 Credits to Elias Vågan for the Online logo 3D model! 👏
 
-Great! But we are missing some state handling to complete our game
+### Final touches
 
-❓ Add animation to move the obstacles along the Y by adding `globalYPosition` to state which holds the Animated value. Use Animated.timing and move all objects along the Y axis from 8 to -8 over 15 seconds
+It's time to make the final touch to the game. Even though the application is quite impressive as it is (good job!!! 🤩), we can make it even more realistic by adding a couple of lighting components. 💡🔦🕯️ Recall the various lighting types from the presentation:
 
-❓ Add an on click handler to the component generator that decrements our game score by one
+- AmbientLight
+- DirectionalLight
+- PointLight
+- SpotLight
 
-Almost done! Notice that the animation does not reset when finished, so we need to add that as well
+In this case, we will use `AmbientLight` and `DirectionalLight`.
 
-❓ Make the animation restart when finished, as well as regenerate a new set of Obstacles
+❓ Add a `DirectionalLight` inside of the render method of `Game`. Set the intensity prop to for instance 2, and its position to 10 in the positive y-direction, because we want to give the impression of moonlight 🌝🌙. Adding a lighting component will not make a difference unless you say that the components should be affected by it. Find the line `lit = {false}` inside of the `Abakus` and `Online` component in the **helpers** folder, and set lit to true instead 🔥. You can also add `lit = {true}` to the `Intro3DModel` component if you want.
 
-Our game is as good as done, but if you got any spare time be sure to try solve the extra tasks.
+Now, you can definitely see a change in lightning. However, it's a bit dark, don't you think? After all, we did not choose the dark side! 😈
 
-### Extra tasks:
-  - Add start and stop game states to our game and with menus ✌🏼
-  - Generate more random components over time ✌🏼
-  - Extends or create your own ComponentGenerator to make the random components move in random directions ✌🏼
+❓ Add an `AmbientLight` component with a low intensity, for instance 0.5. AmbientLight affects all objects in the scene equally! Now, everything looks much brighter and better. 🤗
+
+## Final remarks
+
+Congratulations, young padawan! 🎈🎂🎉 You have now completed your training. 💪 If you are still eager for more, we encourage you to take on some of these challenges on your own:
+
+- Subtract points from the score if you hit a friendly spaceship
+- Add a timer to the game, with a start and stop game state
+- Make the Death Star move around, to further increase the difficulty

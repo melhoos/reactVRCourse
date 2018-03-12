@@ -1,9 +1,9 @@
 import React from 'react'
-import {Animated, View, NativeModules} from 'react-vr'
+import {View, NativeModules, DirectionalLight, AmbientLight} from 'react-vr'
 
 import Intro3DModel from '../introduction/Intro3DModel.vr.js';
+import ComponentGenerator from '../../helpers/ComponentGenerator';
 
-import ComponentGenerator, {getRandomCoordinates, randomComponents} from '../../helpers/ComponentGenerator';
 
 
 const NUM_COMPONENTS = 10;
@@ -69,5 +69,6 @@ export default class Game extends React.Component {
           />
         </View>
       );
+
   }
 }
