@@ -1,6 +1,6 @@
 # ReactVR 👀
 
-Welcome to our ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. A proposed solution for every task is found in **/solutions** folder, but we highly recommend you to try without peeking 😜✌🏼!
+Welcome to our ReactVR course 🙌. This course will help you understand the most basics elements of ReactVR. Please follow the guide and answer the questions. 
 
 ## Getting Started
 
@@ -129,7 +129,7 @@ You might already notice that we have added a **death-star.obj** inside the **/s
 
 ❓ Guess what! We need to import the  `<Intro3DModel/> ` component to our **index.vr.js** file and add it in the View. Go ahead and do it! 👊
 
-❓ Go to the **components/introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<div/>` to `<Model/>`.
+❓ Go to the **components/introduction/intro3DModel.vr.js** file and import the `Model` from the react-vr. Change the `<View/>` to `<Model/>`.
 
 ❓ Then we need to tell the `<Model/>` component to use the **death-star.obj** as its source. Add a `source` prop inside your `<Model/>` component and define the obj file.
 
@@ -251,7 +251,7 @@ But as you may see, the spinning slows down at the end of the rotation. If you d
 Congratulations! You now have a 3D model that animates! 🎉🌟
 
 ## Task 6 - Get to know the VrButton and sound effects! 😁
-EyHey! We are soon finished with the introduction part! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app!
+EyHey! 👏 The last two things we want to show you is the VRbutton and how to add sound effects to your ReactVR app!
 
 ### Let's start with the VrButton.
 
@@ -302,7 +302,7 @@ In order to trigger the sound effect, we need to define the sound. In **static_a
 ```
 
 ## Task 7 - Let's make a VR game! 🎮 🎲 👾
-Finally! You are done with the introduction part. Let's go ahead and start creating a ReactVR game!
+Finally! Let's go ahead and start creating a ReactVR game!
 
 In this game, you will get the chance to walk in Luke Skywalker's footsteps and destroy the Death Star in order to restore peace to the galaxy 🙏 The problem is that the Galactic Empire will have built another Death Star as soon as you destroy the first one.. 😒🤷
 
