@@ -1,13 +1,14 @@
 import React from 'react';
 import {AppRegistry, asset, Pano, View, Text} from 'react-vr';
 
-//import IntroText from './components/introduction/IntroText';
+import Game from './components/game/Game.vr';
 
 export default class IteraGame extends React.Component {
   render() {
     return (
       <View>
-        <Pano source={asset('chess-world.jpg')}/>
+        <Pano source={asset('space.jpg')}/>
+        <Game/>
       </View>
     );
   }

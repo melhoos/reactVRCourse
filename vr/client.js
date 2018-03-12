@@ -15,27 +15,27 @@ function init(bundle, parent, options) {
   const polyfill = new WebVRPolyFill();
 
   // TODO: Uncomment the three lines below to enable the Native Module
-  // const domOverlayContainer = document.createElement('div');
-  // domOverlayContainer.id = 'dom-overlay';
-  // const domOverlayModule = new DomOverlayModule(domOverlayContainer);
+  const domOverlayContainer = document.createElement('div');
+  domOverlayContainer.id = 'dom-overlay';
+  const domOverlayModule = new DomOverlayModule(domOverlayContainer);
 
   const vr = new VRInstance(bundle, 'IteraGame', parent, {
     // Add custom options here
-    /* raycasters: [{
+     raycasters: [{
       getType: () => "simple",
       getRayOrigin: () => [0, 0, 0],
       getRayDirection: () => [0, 0, -1],
       drawsCursor: () => true
     }],
-    cursorVisibility: 'visible', */
-    //enableHotReload: true,
+    cursorVisibility: 'visible', 
+    enableHotReload: true,
     ...options,
     // TODO: Uncomment the line below to enable the Native Module
-    // nativeModules: [domOverlayModule],
+    nativeModules: [domOverlayModule],
   });
 
   // TODO: Uncomment the line below to enable the Native Module
-  // vr.player._wrapper.appendChild(domOverlayContainer);
+  vr.player._wrapper.appendChild(domOverlayContainer);
 
   vr.render = function() {
     // Any custom behavior you want to perform on each frame goes here

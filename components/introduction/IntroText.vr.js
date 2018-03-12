@@ -18,7 +18,7 @@ export default class IntroText extends React.Component {
             textAlignVertical: 'center',
             transform: [{translate: [0, 0, -3]}],
           }}>
-          Velkommen til ReactVR kurs! 
+          Hei
         </Text>
     );
   }
