@@ -69,7 +69,7 @@ export default class Online extends React.Component {
     return (
       <VrButton onClick={() => this.onClick()}>
         <AnimatedModel
-          lit={false}
+          lit={true}
           source={{
             obj: asset('online.obj'),
             mtl: asset('online.mtl')

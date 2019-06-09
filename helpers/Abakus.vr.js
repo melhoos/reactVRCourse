@@ -48,7 +48,7 @@ export default class Abakus extends React.Component {
     return (
       <VrButton>
         <AnimatedSphere
-          lit={false}
+          lit={true}
           radius={0.1}
           heightSegments={20}
           widthSegments={20}
